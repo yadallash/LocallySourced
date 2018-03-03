@@ -21,10 +21,22 @@ struct GroceryItem {
 
 class ShoppingListViewController: UIViewController {
     
-    var shoppingList = [GroceryItem]()
+    // MARK: - Properties
+    var shoppingList = [GroceryItem]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.categoryView.deckTableView.reloadData()
+            }
+        }
+    }
     
+    var shoppingListView = ShoppingListView()
+    
+    // Mark: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    
     
 }
