@@ -21,6 +21,9 @@ class FavoritesViewController: UIViewController {
         self.favoriteView.favoriteTableView.dataSource = self
         self.favoriteView.favoriteTableView.delegate = self
         setupFavoriteView()
+        configNavBar()
+        FileManagerHelper.manager.loadSavedFarmersMarket()
+        self.favoritFarmersMarkets = FileManagerHelper.manager.retrieveSavedFarmersMarket()
     }
     
     func setupFavoriteView(){
@@ -29,6 +32,21 @@ class FavoritesViewController: UIViewController {
             constraint.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
     }
+    func configNavBar(){
+        let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
+        //            self.navigationItem.titleView = imageView
+        navigationItem.rightBarButtonItems = [listNavBarButtonItem]
+        navigationItem.title = "Title"
+    }
+    @objc func addListTest(_ sender: UIBarButtonItem){
+        var markets = [FarmersMarket](){
+            didSet{
+                FileManagerHelper.manager.addNewFarmersMarket(markets[0])
+            }
+        }
+        FarmersMarketAPIClient.manager.getMarkets(completion: {markets = $0}, errorHandler: {print($0)})
+    }
+    
 
 }
 //MARK: - tableView dataSource
