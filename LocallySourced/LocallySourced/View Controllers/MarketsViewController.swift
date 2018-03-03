@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
 class MarketsViewController: UIViewController {
+    
+    lazy var detailView = DetailView(frame: self.view.frame)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.addSubview(detailView)
+        detailView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        self.detailView.backgroundColor = .green
         // Do any additional setup after loading the view, typically from a nib.
     }
 
