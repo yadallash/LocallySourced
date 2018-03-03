@@ -18,6 +18,7 @@ class DetailView: UIView {
         label.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
         label.textAlignment = .center
+        label.numberOfLines = 0
         //to do - set up font, color, etc.
         label.text = "test!!"
         return label
@@ -25,10 +26,11 @@ class DetailView: UIView {
 
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()
-        mapView.isScrollEnabled = false
-        mapView.isZoomEnabled = false
+        mapView.mapType = .standard
+//        mapView.isScrollEnabled = false
+//        mapView.isZoomEnabled = false
         mapView.isPitchEnabled = false
-        mapView.isUserInteractionEnabled = false
+//        mapView.isUserInteractionEnabled = false
         mapView.setContentHuggingPriority(UILayoutPriority(253), for: .vertical)
         mapView.setContentCompressionResistancePriority(UILayoutPriority(249), for: .vertical)
         return mapView
@@ -38,6 +40,7 @@ class DetailView: UIView {
         let label = UILabel()
         label.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
+        label.numberOfLines = 0
         //to do - set up font, color, etc.
         label.text = "test!!"
         return label
@@ -47,6 +50,7 @@ class DetailView: UIView {
         let button = UIButton()
         button.setTitle("Directions", for: .normal)
         //to do - set up font, color, look
+        button.setTitleColor(UIColor.buttonBlue, for: .normal)
         return button
     }()
     
@@ -54,6 +58,7 @@ class DetailView: UIView {
         let button = UIButton()
         button.setTitle("Yelp Reviews", for: .normal)
         //to do - set up font, color, look
+        button.setTitleColor(UIColor.buttonBlue, for: .normal)
         return button
     }()
     
@@ -123,7 +128,7 @@ class DetailView: UIView {
         directionsButton.layer.masksToBounds = true
         directionsButton.layer.cornerRadius = 10
         directionsButton.layer.borderWidth = 1.0
-        directionsButton.layer.borderColor = UIColor.white.cgColor
+        directionsButton.layer.borderColor = UIColor.buttonBlue.cgColor
     }
     
     private func setUpYelpButton() {
@@ -139,7 +144,7 @@ class DetailView: UIView {
         yelpButton.layer.masksToBounds = true
         yelpButton.layer.cornerRadius = 10
         yelpButton.layer.borderWidth = 1.0
-        yelpButton.layer.borderColor = UIColor.white.cgColor
+        yelpButton.layer.borderColor = UIColor.buttonBlue.cgColor
     }
     
 }
