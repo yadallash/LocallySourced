@@ -15,7 +15,7 @@ enum Facilitycity: String, Codable {
     case queens = "Queens"
     case statenIsland = "Staten Island"
 }
-struct FarmersMarket: Codable {
+class FarmersMarket: Codable {
     let facilityaddinfo: String?
     let facilitycity: Facilitycity?
     let facilityname: String
@@ -24,6 +24,7 @@ struct FarmersMarket: Codable {
     let facilityzipcode: String?
     let latitude: String
     let longitude: String
+    var notes: String?
 }
 
 
