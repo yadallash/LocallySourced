@@ -12,9 +12,32 @@ class FavoritesViewController: UIViewController {
     let favoriteView = FavoritesView()
     var favoritFarmersMarkets = [FarmersMarket](){
         didSet{
-            self.favoriteView.favoriteTableView.reloadData()
+            for market in favoritFarmersMarkets{
+                if marketsByBouroghs[(market.facilitycity?.rawValue)!] != nil {
+                    marketsByBouroghs[(market.facilitycity?.rawValue)!]?.append(market)
+                }else{
+                    marketsByBouroghs[(market.facilitycity?.rawValue)!] = [market]
+                }
+            }
+//            self.favoriteView.favoriteTableView.reloadData()
         }
     }
+    var marketsByBouroghs = [String: [FarmersMarket]](){
+        didSet{
+            for (key,value) in marketsByBouroghs{
+                print("Bourogh: \(key), and markets: \(value)")
+            }
+        }
+    }
+    
+    var sectionKey: [String] {
+        var arr: [String] = []
+        for (key, _) in marketsByBouroghs {
+            arr.append(key)
+        }
+        return arr
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -41,7 +64,7 @@ class FavoritesViewController: UIViewController {
     @objc func addListTest(_ sender: UIBarButtonItem){
         var markets = [FarmersMarket](){
             didSet{
-                FileManagerHelper.manager.addNewFarmersMarket(markets[0])
+                FileManagerHelper.manager.addNewFarmersMarket(markets[10])
             }
         }
         FarmersMarketAPIClient.manager.getMarkets(completion: {markets = $0}, errorHandler: {print($0)})
@@ -51,14 +74,20 @@ class FavoritesViewController: UIViewController {
 }
 //MARK: - tableView dataSource
 extension FavoritesViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritFarmersMarkets.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return marketsByBouroghs.count
     }
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (marketsByBouroghs[sectionKey[section]]?.count) ?? 0
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionKey[section]
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let marketSetup = favoritFarmersMarkets[indexPath.count]
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
-        cell.textLabel?.text = marketSetup.facilityname
+        
+        guard let marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return cell}
+        cell.textLabel?.text = marketPlaces[indexPath.row].facilityname
         return cell
     }
     
