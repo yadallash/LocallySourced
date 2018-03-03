@@ -58,14 +58,48 @@ class FileManagerHelper {
         }
     }
     
+    //this func checks if this farmersMarket has been saved before
+    func alreadySavedFarmersMarket(_ farmersMarket: FarmersMarket) -> Bool {
+        return savedFarmersMarkets.contains(where: { (market) -> Bool in
+            return market.facilityname == farmersMarket.facilityname && market.latitude == farmersMarket.latitude && market.longitude == farmersMarket.longitude
+        })
+    }
+    
     // this function will add new farmersMarket to be saved
     func addNewFarmersMarket(_ farmersMarket: FarmersMarket) {
         savedFarmersMarkets.append(farmersMarket)
+        print("added new farmers market!!")
     }
     // this function will add a new shopping list to be saved
     func addNewShoppingList(_ shoppingList: List) {
         savedShoppingLists.append(shoppingList)
+        print("added new shopping list!!")
     }
+    
+    //this function will remove the farmers market from saved
+    func removeFarmersMarket(_ farmersMarket: FarmersMarket) {
+        if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
+            return savedMarket.facilityname == farmersMarket.facilityname && savedMarket.latitude == farmersMarket.latitude && savedMarket.longitude == farmersMarket.longitude
+        }) {
+            savedFarmersMarkets.remove(at: index)
+            print("removed market!!")
+        } else {
+            print("couldn't delete market!!")
+        }
+    }
+    
+    //this function will remove the shopping list from saved
+    func removeShoppingList(_ shoppingList: List) {
+        if let index = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }) {
+            savedShoppingLists.remove(at: index)
+            print("removed shopping list!")
+        } else {
+            print("couldn't delete shopping list!!")
+        }
+    }
+    
     //this function will retrieve the farmersMarket
     func retrieveSavedFarmersMarket() -> [FarmersMarket] {
         return savedFarmersMarkets
