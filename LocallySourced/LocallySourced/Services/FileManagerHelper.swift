@@ -28,6 +28,11 @@ class FileManagerHelper {
             saveFarmersMarket()
         }
     }
+    private var savedShoppingLists = [List](){
+        didSet{
+            print(savedShoppingLists)
+        }
+    }
     //Saving Images To Disk
     func saveImage(with urlStr: String, image: UIImage) {
         let imageData = UIImagePNGRepresentation(image)
@@ -52,12 +57,24 @@ class FileManagerHelper {
             return nil
         }
     }
-    func addNewFarmersMarket(_ model: FarmersMarket) {
-        savedFarmersMarkets.append(model)
+    
+    // this function will add new farmersMarket to be saved
+    func addNewFarmersMarket(_ farmersMarket: FarmersMarket) {
+        savedFarmersMarkets.append(farmersMarket)
     }
+    // this function will add a new shopping list to be saved
+    func addNewShoppingList(_ shoppingList: List) {
+        savedShoppingLists.append(shoppingList)
+    }
+    //this function will retrieve the farmersMarket
     func retrieveSavedFarmersMarket() -> [FarmersMarket] {
         return savedFarmersMarkets
     }
+    //this function will retrieve the shoppingLists
+    func retrieveSavedShoppingLists() -> [List] {
+        return savedShoppingLists
+    }
+    //this function will save farmersMarkets
     private func saveFarmersMarket() {
         let propertyListEncoder = PropertyListEncoder()
         do {
@@ -69,6 +86,18 @@ class FileManagerHelper {
             print(error.localizedDescription)
         }
     }
+    // this function will save shopping list to the phone
+    private func saveShoppingLists(){
+        let propertyListEncoder = PropertyListEncoder()
+        do{
+            let encodedData = try propertyListEncoder.encode(savedShoppingLists)
+            let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
+            try encodedData.write(to: phoneURL, options: .atomic)
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    //this function will load the farmersMarkets from the phone
     func loadSavedFarmersMarket() {
         let propertyListDecoder = PropertyListDecoder()
         do {
@@ -81,6 +110,20 @@ class FileManagerHelper {
             print(error.localizedDescription)
         }
     }
+    //this function will load the shoppingLists from the phone
+    func loadSavedShoppingLists(){
+        let propertyListDecoder = PropertyListDecoder()
+        do{
+        let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
+        let encodedData = try Data(contentsOf: phoneURL)
+        let storedModelArray =  try propertyListDecoder.decode([List].self, from: encodedData)
+        savedShoppingLists = storedModelArray
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+    }
+    
     private func dataFilePath(withPathName path: String) -> URL {
         return FileManagerHelper.manager.documentsDirectory().appendingPathComponent(path)
     }
