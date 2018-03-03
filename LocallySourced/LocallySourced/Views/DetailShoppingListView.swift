@@ -36,6 +36,7 @@ class DetailShoppingListView: UIView {
         setupViews()
     }
     
+    // MARK: - Functions
     private func setupViews() {
         setupTableView()
     }
