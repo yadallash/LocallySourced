@@ -11,6 +11,16 @@ import MapKit
 import SnapKit
 
 class DetailView: UIView {
+    
+    lazy var marketNameLabel: UILabel =  {
+        let label = UILabel()
+        
+        label.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
+        label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
+        //to do - set up font, color, etc.
+        label.text = "test!!"
+        return label
+    }()
 
     lazy var mapView: MKMapView = {
         let mapView = MKMapView()
@@ -23,7 +33,10 @@ class DetailView: UIView {
     
     lazy var addressLabel: UILabel = {
         let label = UILabel()
+        label.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
+        label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
         //to do - set up font, color, etc.
+        label.text = "test!!"
         return label
     }()
     
@@ -36,7 +49,7 @@ class DetailView: UIView {
     
     lazy var yelpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Yelp", for: .normal)
+        button.setTitle("Yelp Reviews", for: .normal)
         //to do - set up font, color, look
         return button
     }()
@@ -57,19 +70,30 @@ class DetailView: UIView {
     }
     
     private func setUpViews() {
+        setUpMarketNameLabel()
         setUpMapView()
         setUpAddressLabel()
         setUpDirectionsButton()
         setUpYelpButton()
     }
     
+    private func setUpMarketNameLabel() {
+        addSubview(marketNameLabel)
+        
+        marketNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self).offset(20)
+            make.leading.trailing.equalTo(self).inset(20)
+        }
+    }
+    
     private func setUpMapView() {
         addSubview(mapView)
         
         mapView.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(20)
+            make.top.equalTo(marketNameLabel.snp.bottom).offset(20)
             make.width.equalTo(self.snp.width).multipliedBy(0.80)
             make.centerX.equalTo(self)
+            make.height.equalTo(self).multipliedBy(0.5)
         }
     }
     
@@ -88,19 +112,31 @@ class DetailView: UIView {
         
         directionsButton.snp.makeConstraints { (make) in
             make.width.equalTo(self).multipliedBy(0.50)
-            make.top.equalTo(addressLabel).offset(20)
+            make.height.equalTo(self).multipliedBy(0.05)
+            make.top.equalTo(addressLabel.snp.bottom).offset(20)
             make.centerX.equalTo(self)
         }
+        
+        directionsButton.layer.masksToBounds = true
+        directionsButton.layer.cornerRadius = 10
+        directionsButton.layer.borderWidth = 1.0
+        directionsButton.layer.borderColor = UIColor.white.cgColor
     }
     
     private func setUpYelpButton() {
         addSubview(yelpButton)
         
         yelpButton.snp.makeConstraints { (make) in
-            make.width.equalTo(directionsButton)
-            make.top.equalTo(directionsButton).offset(10)
-            make.centerX.equalTo(<#T##other: ConstraintRelatableTarget##ConstraintRelatableTarget#>)
+            make.width.height.equalTo(directionsButton)
+            make.top.equalTo(directionsButton.snp.bottom).offset(10)
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(self).offset(-20)
         }
+        
+        yelpButton.layer.masksToBounds = true
+        yelpButton.layer.cornerRadius = 10
+        yelpButton.layer.borderWidth = 1.0
+        yelpButton.layer.borderColor = UIColor.white.cgColor
     }
     
 }
