@@ -9,11 +9,14 @@
 import UIKit
 
 class ShoppingListsViewController: UIViewController {
+    
+    let listView = ShoppingListsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
     }
 
+    
 
 }
