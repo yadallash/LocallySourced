@@ -6,7 +6,14 @@ target 'LocallySourced' do
   use_frameworks!
 
   # Pods for LocallySourced
-
+  #pod 'Firebase/Core'
+  #pod 'Firebase/Auth’
+  #pod 'Firebase/Database’
+  #pod 'Firebase/Storage'
+  pod 'SnapKit'
+  pod 'Toucan'
+  pod 'Kingfisher'
+  pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
   target 'LocallySourcedTests' do
     inherit! :search_paths
     # Pods for testing
