@@ -27,6 +27,8 @@
 		81941F95204B1806009DC98B /* FarmersMarketAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */; };
 		81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F96204B1B78009DC98B /* FileManagerHelper.swift */; };
 		B3827E67095BFAE95A3915C9 /* Pods_LocallySourcedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */; };
+		F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CD204B2CDC0024F011 /* ItemCell.swift */; };
+		F4CE56D0204B2D0E0024F011 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CF204B2D0E0024F011 /* ShoppingListView.swift */; };
 		F84E0A49B395B24E53750F3C /* Pods_LocallySourcedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FB3C1C2EA80682224E866A /* Pods_LocallySourcedUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		C3C6AD24EFA119CAFF7496B2 /* Pods-LocallySourced.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.release.xcconfig"; sourceTree = "<group>"; };
 		D9FB3C1C2EA80682224E866A /* Pods_LocallySourcedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourcedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E340F71690AC0D4FBDA22CF5 /* Pods-LocallySourcedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4CE56CD204B2CDC0024F011 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		F4CE56CF204B2D0E0024F011 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourcedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -203,7 +207,8 @@
 				81941F85204B0356009DC98B /* FramersMarketDetailView.swift */,
 				81941F87204B036A009DC98B /* FavoritesView.swift */,
 				81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */,
-				81941F93204B1344009DC98B /* Cells */,
+				F4CE56CF204B2D0E0024F011 /* ShoppingListView.swift */,
+				F4CE56CC204B2CC80024F011 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,13 +231,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		81941F93204B1344009DC98B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		8AA34273860BC43F3A274F51 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +242,14 @@
 				638C05F4668F892D098C8591 /* Pods-LocallySourcedUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4CE56CC204B2CC80024F011 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F4CE56CD204B2CDC0024F011 /* ItemCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CE56D0204B2D0E0024F011 /* ShoppingListView.swift in Sources */,
 				81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */,
 				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
@@ -558,6 +565,7 @@
 				81941F80204B017C009DC98B /* DetailViewController.swift in Sources */,
 				81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */,
 				81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */,
+				F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
