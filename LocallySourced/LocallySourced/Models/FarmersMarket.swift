@@ -20,9 +20,10 @@ struct FarmersMarket: Codable {
     let facilitycity: Facilitycity?
     let facilityname: String
     let facilitystate: String
-    let facilitystreetname, facilityzipcode: String?
-    let latitude: Double
-    let longitude: Double
+    let facilitystreetname: String?
+    let facilityzipcode: String?
+    let latitude: String
+    let longitude: String
 }
 
 
