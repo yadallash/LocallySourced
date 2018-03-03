@@ -10,7 +10,6 @@
 		4527098C09139AF54F4C9AC6 /* Pods_LocallySourced.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */; };
 		81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F49204AF297009DC98B /* AppDelegate.swift */; };
 		81941F4C204AF297009DC98B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F4B204AF297009DC98B /* ViewController.swift */; };
-		81941F4F204AF297009DC98B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941F4D204AF297009DC98B /* Main.storyboard */; };
 		81941F51204AF297009DC98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81941F50204AF297009DC98B /* Assets.xcassets */; };
 		81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941F52204AF297009DC98B /* LaunchScreen.storyboard */; };
 		81941F5F204AF297009DC98B /* LocallySourcedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F5E204AF297009DC98B /* LocallySourcedTests.swift */; };
@@ -43,7 +42,6 @@
 		81941F46204AF297009DC98B /* LocallySourced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallySourced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81941F49204AF297009DC98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81941F4B204AF297009DC98B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		81941F4E204AF297009DC98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81941F50204AF297009DC98B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81941F53204AF297009DC98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81941F55204AF297009DC98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,9 +125,8 @@
 				81941F7A204AF2E9009DC98B /* Views */,
 				81941F7B204AF2F4009DC98B /* Services */,
 				81941F7C204AF300009DC98B /* Models */,
-				81941F79204AF2CC009DC98B /* Supporting Files  */,
 				81941F78204AF2BF009DC98B /* View Controllers */,
-				81941F77204AF2A5009DC98B /* Story Boards */,
+				81941F79204AF2CC009DC98B /* Supporting Files  */,
 				81941F55204AF297009DC98B /* Info.plist */,
 			);
 			path = LocallySourced;
@@ -151,14 +148,6 @@
 				81941F6B204AF297009DC98B /* Info.plist */,
 			);
 			path = LocallySourcedUITests;
-			sourceTree = "<group>";
-		};
-		81941F77204AF2A5009DC98B /* Story Boards */ = {
-			isa = PBXGroup;
-			children = (
-				81941F4D204AF297009DC98B /* Main.storyboard */,
-			);
-			path = "Story Boards";
 			sourceTree = "<group>";
 		};
 		81941F78204AF2BF009DC98B /* View Controllers */ = {
@@ -331,7 +320,6 @@
 			files = (
 				81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */,
 				81941F51204AF297009DC98B /* Assets.xcassets in Resources */,
-				81941F4F204AF297009DC98B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,9 +475,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -540,14 +537,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		81941F4D204AF297009DC98B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				81941F4E204AF297009DC98B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		81941F52204AF297009DC98B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
