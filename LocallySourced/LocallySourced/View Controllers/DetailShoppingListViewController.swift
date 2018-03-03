@@ -1,5 +1,5 @@
 //
-//  ShoppingListViewController.swift
+//  DetailShoppingListViewController.swift
 //  LocallySourced
 //
 //  Created by C4Q on 3/3/18.
@@ -19,10 +19,10 @@ struct GroceryItem {
     }
 }
 
-class ShoppingListViewController: UIViewController {
+class DetailShoppingListViewController: UIViewController {
     
     // MARK: - Properties
-    var shoppingListView = ShoppingListView()
+    var shoppingListView = DetailShoppingListView()
     var shoppingList = [GroceryItem]() {
         didSet {
             DispatchQueue.main.async {

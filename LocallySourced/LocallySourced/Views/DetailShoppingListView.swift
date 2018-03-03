@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ShoppingListView: UIView {
+class DetailShoppingListView: UIView {
     
     let cellID = "ItemCell"
     
