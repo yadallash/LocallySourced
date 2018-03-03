@@ -69,5 +69,10 @@ class ItemCell: UITableViewCell {
             //            make.height.equalTo(safeAreaLayoutGuide).multipliedBy(0.2)
         }
     }
+    
+    func configureCell(with groceryItem: GroceryItem) {
+        self.itemLabel.text = groceryItem.name
+        self.stepperButton.value = groceryItem.quantity
+    }
 }
 
