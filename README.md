@@ -1,5 +1,5 @@
 # LocallySourced
-##Hackathon Project Plan
+## Hackathon Project Plan
 
 nature calls lol - clint, melissa
 wifi hotspot
