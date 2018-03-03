@@ -11,16 +11,26 @@ struct DefaultStruct:Codable {
     let name: String
     let id: Int
 }
+enum SavedDataPath: String{
+    case farmersMarketDataPath
+    case shoppingListsDataPath
+}
 
 import UIKit
 class FileManagerHelper {
     private init() {}
-    let savedDataPath = "savedData"
+    private let farmersMarketSavedDataPath = SavedDataPath.farmersMarketDataPath.rawValue
+    private let shoppingListDataPath = SavedDataPath.shoppingListsDataPath.rawValue
     static let manager = FileManagerHelper()
-    private var savedModelArray = [DefaultStruct]() {
+    private var savedFarmersMarkets = [FarmersMarket]() {
         didSet {
-            print(savedModelArray)
-            saveDefaultArray()
+            print(savedFarmersMarkets)
+            saveFarmersMarket()
+        }
+    }
+    private var savedShoppingLists = [List](){
+        didSet{
+            print(savedShoppingLists)
         }
     }
     //Saving Images To Disk
@@ -47,35 +57,73 @@ class FileManagerHelper {
             return nil
         }
     }
-    func addNew(_ model: DefaultStruct) {
-        savedModelArray.append(model)
+    
+    // this function will add new farmersMarket to be saved
+    func addNewFarmersMarket(_ farmersMarket: FarmersMarket) {
+        savedFarmersMarkets.append(farmersMarket)
     }
-    func retrieveSavedElements() -> [DefaultStruct] {
-        return savedModelArray
+    // this function will add a new shopping list to be saved
+    func addNewShoppingList(_ shoppingList: List) {
+        savedShoppingLists.append(shoppingList)
     }
-    private func saveDefaultArray() {
+    //this function will retrieve the farmersMarket
+    func retrieveSavedFarmersMarket() -> [FarmersMarket] {
+        return savedFarmersMarkets
+    }
+    //this function will retrieve the shoppingLists
+    func retrieveSavedShoppingLists() -> [List] {
+        return savedShoppingLists
+    }
+    //this function will save farmersMarkets
+    private func saveFarmersMarket() {
         let propertyListEncoder = PropertyListEncoder()
         do {
-            let encodedData = try propertyListEncoder.encode(savedModelArray)
-            let phoneURL = dataFilePath(withPathName: savedDataPath)
+            let encodedData = try propertyListEncoder.encode(savedFarmersMarkets)
+            let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             try encodedData.write(to: phoneURL, options: .atomic)
         }
         catch {
             print(error.localizedDescription)
         }
     }
-    func loadSavedElements() {
+    // this function will save shopping list to the phone
+    private func saveShoppingLists(){
+        let propertyListEncoder = PropertyListEncoder()
+        do{
+            let encodedData = try propertyListEncoder.encode(savedShoppingLists)
+            let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
+            try encodedData.write(to: phoneURL, options: .atomic)
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
+    //this function will load the farmersMarkets from the phone
+    func loadSavedFarmersMarket() {
         let propertyListDecoder = PropertyListDecoder()
         do {
-            let phoneURL = dataFilePath(withPathName: savedDataPath)
+            let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             let encodedData = try Data(contentsOf: phoneURL)
-            let storedModelArray = try propertyListDecoder.decode([DefaultStruct].self, from: encodedData)
-            savedModelArray = storedModelArray
+            let storedModelArray = try propertyListDecoder.decode([FarmersMarket].self, from: encodedData)
+            savedFarmersMarkets = storedModelArray
         }
         catch {
             print(error.localizedDescription)
         }
     }
+    //this function will load the shoppingLists from the phone
+    func loadSavedShoppingLists(){
+        let propertyListDecoder = PropertyListDecoder()
+        do{
+        let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
+        let encodedData = try Data(contentsOf: phoneURL)
+        let storedModelArray =  try propertyListDecoder.decode([List].self, from: encodedData)
+        savedShoppingLists = storedModelArray
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+    }
+    
     private func dataFilePath(withPathName path: String) -> URL {
         return FileManagerHelper.manager.documentsDirectory().appendingPathComponent(path)
     }
