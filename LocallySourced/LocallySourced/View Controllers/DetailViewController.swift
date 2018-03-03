@@ -33,11 +33,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
+        setUpNavigation()
     }
     
     private func setUpViews() {
-        detailView.mapView.delegate = self
-        
         self.view.addSubview(detailView)
         detailView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
@@ -53,10 +52,49 @@ class DetailViewController: UIViewController {
             detailView.mapView.addAnnotation(annotation)
             detailView.mapView.setRegion(region, animated: false)
         }
+        
+        detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTapped), for: .touchUpInside)
+        detailView.yelpButton.addTarget(self, action: #selector(yelpButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setUpNavigation() {
+        //if not favorited
+        let heartImage: UIImage? = UIImage(named: "unfillHeartIcon")?.withRenderingMode(.alwaysOriginal)
+        //if favorited - to do
+        
+        let saveBarButtonItem = UIBarButtonItem(image: heartImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveMarket(sender:)))
+        let addItemBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shoppingIcon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(addItemToShoppingList))
+        self.navigationItem.rightBarButtonItems = [saveBarButtonItem, addItemBarButtonItem]
+    }
+    
+    @objc private func saveMarket(sender: UIBarButtonItem) {
+        //to do - add to saving with file manager
+        print("save item!!")
+        let heartUnfilled = UIImage(named: "unfillHeartIcon")?.withRenderingMode(.alwaysOriginal)
+        let heartFilled = UIImage(named: "fillHeartIcon")?.withRenderingMode(.alwaysOriginal)
+        
+        if sender.image == heartFilled {
+            sender.image = heartUnfilled
+            //to do - remove from favorites
+            FileManagerHelper.manager.removeFarmersMarket(market)
+        } else {
+            sender.image = heartFilled
+            //to do - add to favorites
+            FileManagerHelper.manager.addNewFarmersMarket(market)
+        }
+    }
+    
+    @objc private func addItemToShoppingList() {
+        //to do - add to saving with shopping list
+        print("add item!!")
+    }
+    
+    @objc private func directionsButtonTapped() {
+        print("directions button tapped!!")
+    }
+    
+    @objc private func yelpButtonTapped() {
+        print("yelp button tapped!!")
     }
 
-}
-
-extension DetailViewController: MKMapViewDelegate {
-    
 }
