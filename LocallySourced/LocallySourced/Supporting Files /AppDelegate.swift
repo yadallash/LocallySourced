@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let tabViewController = UITabBarController()
         //instance of the homeViewController
-        let homeViewiewController = HomeViewController()
-        let navigationHomeController = UINavigationController(rootViewController: homeViewiewController)
-        navigationHomeController.tabBarItem = UITabBarItem(title: "Home", image: nil, selectedImage: nil)
+        let marketsViewiewController = MarketsViewController()
+        let navigationHomeController = UINavigationController(rootViewController: marketsViewiewController)
+        navigationHomeController.tabBarItem = UITabBarItem(title: "Markets", image: nil, selectedImage: nil)
         //instance of favoriteViewController
         let favoriteViewController = FavoritesViewController()
         let navigationFavoriteViewController = UINavigationController(rootViewController: favoriteViewController)
