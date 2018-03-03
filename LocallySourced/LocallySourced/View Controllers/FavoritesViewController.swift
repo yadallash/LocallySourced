@@ -9,27 +9,44 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
-
+    let favoriteView = FavoritesView()
+    var favoritFarmersMarkets = [FarmersMarket](){
+        didSet{
+            self.favoriteView.favoriteTableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        view.backgroundColor = .white
+        self.favoriteView.favoriteTableView.dataSource = self
+        self.favoriteView.favoriteTableView.delegate = self
+        setupFavoriteView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setupFavoriteView(){
+        view.addSubview(favoriteView)
+        favoriteView.snp.makeConstraints { (constraint) in
+            constraint.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+        }
     }
-    */
 
+}
+//MARK: - tableView dataSource
+extension FavoritesViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favoritFarmersMarkets.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let marketSetup = favoritFarmersMarkets[indexPath.count]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+        cell.textLabel?.text = marketSetup.facilityname
+        return cell
+    }
+    
+    
+}
+//MARK: - tableView delegates
+extension FavoritesViewController: UITableViewDelegate{
+    
 }
