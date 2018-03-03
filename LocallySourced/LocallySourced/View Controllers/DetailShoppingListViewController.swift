@@ -1,5 +1,5 @@
 //
-//  ShoppingListViewController.swift
+//  DetailShoppingListViewController.swift
 //  LocallySourced
 //
 //  Created by C4Q on 3/3/18.
@@ -19,24 +19,23 @@ struct GroceryItem {
     }
 }
 
-class ShoppingListViewController: UIViewController {
+class DetailShoppingListViewController: UIViewController {
     
     // MARK: - Properties
+    var shoppingListView = DetailShoppingListView()
     var shoppingList = [GroceryItem]() {
         didSet {
             DispatchQueue.main.async {
-                self.categoryView.deckTableView.reloadData()
+                self.shoppingListView.shoppingListTableView.reloadData()
             }
         }
     }
-    
-    var shoppingListView = ShoppingListView()
     
     // Mark: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
+    // MARK: - Functions
     
 }
