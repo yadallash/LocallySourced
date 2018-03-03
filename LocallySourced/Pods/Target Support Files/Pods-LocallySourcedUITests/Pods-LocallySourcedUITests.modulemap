@@ -1,0 +1,6 @@
+framework module Pods_LocallySourcedUITests {
+  umbrella header "Pods-LocallySourcedUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
