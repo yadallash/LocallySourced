@@ -20,7 +20,7 @@ protocol LocationDelegate: class {
 class LocationService: NSObject {
     static let manager = LocationService()
     private var locationManager: CLLocationManager!
-    private var geoCOder = CLGeocoder()
+    private var geoCoder = CLGeocoder()
     weak var delegate: LocationDelegate?
     
     private override init() {
@@ -104,7 +104,7 @@ extension LocationService: CLLocationManagerDelegate{
 extension LocationService {
     func getCityNameFromCLLocation(inputCLLocation: CLLocation, completion: @escaping (String)->Void) {
         DispatchQueue.main.async {
-            self.geoCOder.reverseGeocodeLocation(inputCLLocation) { (placeMarks, error) in
+            self.geoCoder.reverseGeocodeLocation(inputCLLocation) { (placeMarks, error) in
                 if let error = error{
                     print(error)
                 }
@@ -121,8 +121,8 @@ extension LocationService {
         }
     }
     
-    func getCityCordinateFromCityName(inputCityName: String, completion: @escaping (CLLocation)->Void, errorHandler:@escaping (Error)->Void){
-        self.geoCOder.geocodeAddressString(inputCityName) { (placeMarks, error) in
+    func getCityCordinateFromCityName(inputAddress: String, completion: @escaping (CLLocation)->Void, errorHandler:@escaping (Error)->Void){
+        self.geoCoder.geocodeAddressString(inputAddress) { (placeMarks, error) in
             if let error = error{
                 print(error)
                 errorHandler(error)

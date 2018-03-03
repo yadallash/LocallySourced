@@ -22,9 +22,9 @@ class FileManagerHelper {
     private let farmersMarketSavedDataPath = SavedDataPath.farmersMarketDataPath.rawValue
     private let shoppingListDataPath = SavedDataPath.shoppingListsDataPath.rawValue
     static let manager = FileManagerHelper()
-    private var savedFarmersList = [FarmersMarket]() {
+    private var savedFarmersMarkets = [FarmersMarket]() {
         didSet {
-            print(savedFarmersList)
+            print(savedFarmersMarkets)
             saveFarmersMarket()
         }
     }
@@ -53,15 +53,15 @@ class FileManagerHelper {
         }
     }
     func addNewFarmersMarket(_ model: FarmersMarket) {
-        savedFarmersList.append(model)
+        savedFarmersMarkets.append(model)
     }
     func retrieveSavedFarmersMarket() -> [FarmersMarket] {
-        return savedFarmersList
+        return savedFarmersMarkets
     }
     private func saveFarmersMarket() {
         let propertyListEncoder = PropertyListEncoder()
         do {
-            let encodedData = try propertyListEncoder.encode(savedFarmersList)
+            let encodedData = try propertyListEncoder.encode(savedFarmersMarkets)
             let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             try encodedData.write(to: phoneURL, options: .atomic)
         }
@@ -75,7 +75,7 @@ class FileManagerHelper {
             let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             let encodedData = try Data(contentsOf: phoneURL)
             let storedModelArray = try propertyListDecoder.decode([FarmersMarket].self, from: encodedData)
-            savedFarmersList = storedModelArray
+            savedFarmersMarkets = storedModelArray
         }
         catch {
             print(error.localizedDescription)
