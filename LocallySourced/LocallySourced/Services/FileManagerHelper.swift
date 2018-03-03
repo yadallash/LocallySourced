@@ -11,16 +11,21 @@ struct DefaultStruct:Codable {
     let name: String
     let id: Int
 }
+enum SavedDataPath: String{
+    case farmersMarketDataPath
+    case shoppingListsDataPath
+}
 
 import UIKit
 class FileManagerHelper {
     private init() {}
-    let savedDataPath = "savedData"
+    private let farmersMarketSavedDataPath = SavedDataPath.farmersMarketDataPath.rawValue
+    private let shoppingListDataPath = SavedDataPath.shoppingListsDataPath.rawValue
     static let manager = FileManagerHelper()
-    private var savedModelArray = [DefaultStruct]() {
+    private var savedFarmersList = [FarmersMarket]() {
         didSet {
-            print(savedModelArray)
-            saveDefaultArray()
+            print(savedFarmersList)
+            saveFarmersMarket()
         }
     }
     //Saving Images To Disk
@@ -47,30 +52,30 @@ class FileManagerHelper {
             return nil
         }
     }
-    func addNew(_ model: DefaultStruct) {
-        savedModelArray.append(model)
+    func addNewFarmersMarket(_ model: FarmersMarket) {
+        savedFarmersList.append(model)
     }
-    func retrieveSavedElements() -> [DefaultStruct] {
-        return savedModelArray
+    func retrieveSavedFarmersMarket() -> [FarmersMarket] {
+        return savedFarmersList
     }
-    private func saveDefaultArray() {
+    private func saveFarmersMarket() {
         let propertyListEncoder = PropertyListEncoder()
         do {
-            let encodedData = try propertyListEncoder.encode(savedModelArray)
-            let phoneURL = dataFilePath(withPathName: savedDataPath)
+            let encodedData = try propertyListEncoder.encode(savedFarmersList)
+            let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             try encodedData.write(to: phoneURL, options: .atomic)
         }
         catch {
             print(error.localizedDescription)
         }
     }
-    func loadSavedElements() {
+    func loadSavedFarmersMarket() {
         let propertyListDecoder = PropertyListDecoder()
         do {
-            let phoneURL = dataFilePath(withPathName: savedDataPath)
+            let phoneURL = dataFilePath(withPathName: farmersMarketSavedDataPath)
             let encodedData = try Data(contentsOf: phoneURL)
-            let storedModelArray = try propertyListDecoder.decode([DefaultStruct].self, from: encodedData)
-            savedModelArray = storedModelArray
+            let storedModelArray = try propertyListDecoder.decode([FarmersMarket].self, from: encodedData)
+            savedFarmersList = storedModelArray
         }
         catch {
             print(error.localizedDescription)
