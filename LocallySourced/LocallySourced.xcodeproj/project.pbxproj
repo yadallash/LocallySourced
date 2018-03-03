@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4527098C09139AF54F4C9AC6 /* Pods_LocallySourced.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */; };
 		81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F49204AF297009DC98B /* AppDelegate.swift */; };
-		81941F4C204AF297009DC98B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F4B204AF297009DC98B /* HomeViewController.swift */; };
+		81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F4B204AF297009DC98B /* MarketsViewController.swift */; };
 		81941F51204AF297009DC98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81941F50204AF297009DC98B /* Assets.xcassets */; };
 		81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941F52204AF297009DC98B /* LaunchScreen.storyboard */; };
 		81941F5F204AF297009DC98B /* LocallySourcedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F5E204AF297009DC98B /* LocallySourcedTests.swift */; };
@@ -51,7 +51,7 @@
 		6FA17A7015C8A84A666CFBC3 /* Pods-LocallySourcedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.release.xcconfig"; sourceTree = "<group>"; };
 		81941F46204AF297009DC98B /* LocallySourced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallySourced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81941F49204AF297009DC98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81941F4B204AF297009DC98B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		81941F4B204AF297009DC98B /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		81941F50204AF297009DC98B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81941F53204AF297009DC98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81941F55204AF297009DC98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 		81941F78204AF2BF009DC98B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				81941F4B204AF297009DC98B /* HomeViewController.swift */,
+				81941F4B204AF297009DC98B /* MarketsViewController.swift */,
 				81941F7F204B017C009DC98B /* DetailViewController.swift */,
 				81941F81204B020C009DC98B /* FavoritesViewController.swift */,
 				81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */,
@@ -538,7 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81941F4C204AF297009DC98B /* HomeViewController.swift in Sources */,
+				81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */,
 				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
 				81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */,
