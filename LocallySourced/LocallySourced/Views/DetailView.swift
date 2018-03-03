@@ -17,6 +17,7 @@ class DetailView: UIView {
         
         label.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
+        label.textAlignment = .center
         //to do - set up font, color, etc.
         label.text = "test!!"
         return label
@@ -28,6 +29,8 @@ class DetailView: UIView {
         mapView.isZoomEnabled = false
         mapView.isPitchEnabled = false
         mapView.isUserInteractionEnabled = false
+        mapView.setContentHuggingPriority(UILayoutPriority(253), for: .vertical)
+        mapView.setContentCompressionResistancePriority(UILayoutPriority(249), for: .vertical)
         return mapView
     }()
     
@@ -93,7 +96,7 @@ class DetailView: UIView {
             make.top.equalTo(marketNameLabel.snp.bottom).offset(20)
             make.width.equalTo(self.snp.width).multipliedBy(0.80)
             make.centerX.equalTo(self)
-            make.height.equalTo(self).multipliedBy(0.5)
+            make.height.lessThanOrEqualTo(self).multipliedBy(0.5)
         }
     }
     
@@ -112,7 +115,7 @@ class DetailView: UIView {
         
         directionsButton.snp.makeConstraints { (make) in
             make.width.equalTo(self).multipliedBy(0.50)
-            make.height.equalTo(self).multipliedBy(0.05)
+            make.height.equalTo(self).multipliedBy(0.10)
             make.top.equalTo(addressLabel.snp.bottom).offset(20)
             make.centerX.equalTo(self)
         }
