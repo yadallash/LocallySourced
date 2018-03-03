@@ -9,18 +9,21 @@
 import UIKit
 
 class MarketsViewController: UIViewController {
+    
+    let marketView = MarketsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .green
-        // Do any additional setup after loading the view, typically from a nib.
+        constrainView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func constrainView() {
+        view.addSubview(marketView)
+        marketView.snp.makeConstraints { (view) in
+            view.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
-
 
 }
 
