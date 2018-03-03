@@ -21,12 +21,13 @@ class MarketsView: UIView {
     lazy var buttonTableView: UITableView = {
         let tv = UITableView()
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "FilterCell")
+        tv.isHidden = true
         return tv
     }()
     
     lazy var marketTableView: UITableView = {
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "MarketCell")
+        tv.register(MarketCell.self, forCellReuseIdentifier: "MarketCell")
         return tv
     }()
     
@@ -60,7 +61,8 @@ class MarketsView: UIView {
         
         marketTableView.snp.makeConstraints { (view) in
             view.centerX.equalTo(self)
-            view.height.equalTo(self.snp.height).multipliedBy(0.5)
+//            view.height.equalTo(self.snp.height).multipliedBy(0.5)
+            view.top.equalTo(filterButton.snp.bottom).offset(10)
             view.leading.trailing.bottom.equalTo(self)
             
         }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4527098C09139AF54F4C9AC6 /* Pods_LocallySourced.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */; };
+		81800F51204B393E00FE189C /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81800F50204B393E00FE189C /* MarketCell.swift */; };
 		81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F49204AF297009DC98B /* AppDelegate.swift */; };
 		81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F4B204AF297009DC98B /* MarketsViewController.swift */; };
 		81941F51204AF297009DC98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81941F50204AF297009DC98B /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourced.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638C05F4668F892D098C8591 /* Pods-LocallySourcedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedUITests/Pods-LocallySourcedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6FA17A7015C8A84A666CFBC3 /* Pods-LocallySourcedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.release.xcconfig"; sourceTree = "<group>"; };
+		81800F50204B393E00FE189C /* MarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
 		81941F46204AF297009DC98B /* LocallySourced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallySourced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81941F49204AF297009DC98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81941F4B204AF297009DC98B /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				F4CE56CD204B2CDC0024F011 /* ItemCell.swift */,
+				81800F50204B393E00FE189C /* MarketCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				81941F84204B0341009DC98B /* MarketsView.swift in Sources */,
 				81941F92204B132F009DC98B /* ShoppingListViewController.swift in Sources */,
 				81941F80204B017C009DC98B /* DetailViewController.swift in Sources */,
+				81800F51204B393E00FE189C /* MarketCell.swift in Sources */,
 				81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */,
 				81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */,
 				F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */,

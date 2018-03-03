@@ -15,8 +15,15 @@ class ShoppingListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
+        constrainView()
     }
 
+    private func constrainView() {
+        view.addSubview(listView)
+        listView.snp.makeConstraints { (view) in
+            view.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
     
 
 }

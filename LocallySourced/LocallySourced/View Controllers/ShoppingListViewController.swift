@@ -25,7 +25,7 @@ class ShoppingListViewController: UIViewController {
     var shoppingList = [GroceryItem]() {
         didSet {
             DispatchQueue.main.async {
-                self.categoryView.deckTableView.reloadData()
+//                self.categoryView.deckTableView.reloadData()
             }
         }
     }
