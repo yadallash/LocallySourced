@@ -175,6 +175,7 @@ class FileManagerHelper {
             return savedMarket.facilityname == market.facilityname && savedMarket.facilitycity?.rawValue == market.facilitycity?.rawValue && savedMarket.facilityzipcode == market.facilityzipcode
         }) {
             savedFarmersMarkets[index].notes = notes
+            saveFarmersMarket()
             print("updated farmers market notes!")
         } else {
             print("couldn't update farmers market notes")
