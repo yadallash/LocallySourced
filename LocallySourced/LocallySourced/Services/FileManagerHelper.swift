@@ -83,6 +83,25 @@ class FileManagerHelper {
         print("added new shopping list!!")
     }
     
+    //this func adds items to a shopping list, and returns false when the shopping list already has this item, otherwise it returns true
+    func addItem(_ item: Item, toShoppingList shoppingList: List) -> Bool {
+        if let index = savedShoppingLists.index(where: { (list) -> Bool in
+            return list.title == shoppingList.title
+        }) {
+            if savedShoppingLists[index].items.contains(where: { (savedItem) -> Bool in
+                return savedItem.name == item.name
+            }) {
+                return false
+            }
+            savedShoppingLists[index].items.append(item)
+            print("added item!!")
+            return true
+        } else {
+            print("couldn't add item!!")
+            return false
+        }
+    }
+    
     //this function will remove the farmers market from saved
     func removeFarmersMarket(_ farmersMarket: FarmersMarket) {
         if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
