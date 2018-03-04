@@ -9,6 +9,13 @@
 import UIKit
 
 class ShoppingListsView: UIView {
+    
+    lazy var listTableView: UITableView = {
+        let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "ListCell")
+        tv.backgroundColor = .clear
+        return tv
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +26,11 @@ class ShoppingListsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews(){
+        addSubview(listTableView)
         
+        listTableView.snp.makeConstraints { (view) in
+            view.edges.equalTo(self)
+        }
     }
 
 }
