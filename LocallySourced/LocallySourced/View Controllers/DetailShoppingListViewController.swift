@@ -112,10 +112,10 @@ extension DetailShoppingListViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         var groceryItem = shoppingList.items[indexPath.row]
         groceryItem.completed = !groceryItem.completed
+        FileManagerHelper.manager.updateItem(groceryItem, forShoppingList: self.shoppingList)
         //        let toggledCompletion = !groceryItem.completed
         //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
         //        groceryItem.completed = toggledCompletion
-//        cell.deleg
         tableView.reloadData()
     }
     
