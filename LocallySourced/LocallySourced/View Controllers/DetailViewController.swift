@@ -14,15 +14,15 @@ class DetailViewController: UIViewController {
 
     private lazy var detailView = DetailView(frame: self.view.safeAreaLayoutGuide.layoutFrame)
     
-    private var market: FarmersMarket = FarmersMarket()
+    private var market: FarmersMarket!
     
     private var address: String {
         return "\(market.facilitystreetname ?? "No Street Name Available"), \(market.facilitycity?.rawValue ?? "No City Name Available"), \(market.facilitystate) \(market.facilityzipcode ?? "No Zipcode Available")".replacingOccurrences(of: "&", with: "and")
     }
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+//    }
     
     init(market: FarmersMarket) {
         self.market = market
