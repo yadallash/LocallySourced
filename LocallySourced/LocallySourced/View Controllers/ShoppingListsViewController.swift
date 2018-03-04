@@ -76,8 +76,32 @@ extension ShoppingListsViewController: UITableViewDataSource {
         return cell
     }
     
-    
 }
 extension ShoppingListsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, handler) in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+                handler(true)
+            }
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true //HERE..
+        return configuration
+    }
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+            handler(true)
+        }
+        editAction.backgroundColor = .lightGray
+        let configuration = UISwipeActionsConfiguration(actions: [editAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = DetailShoppingListViewController(list: shoppingList[indexPath.row])
+        navigationController?.pushViewController(detail, animated: true)
+    }
 }
+
+

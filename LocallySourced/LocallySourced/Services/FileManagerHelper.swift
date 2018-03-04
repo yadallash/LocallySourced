@@ -98,6 +98,7 @@ class FileManagerHelper {
             }
             savedShoppingLists[index].items.append(item)
             print("added item!!")
+            saveShoppingLists()
             return true
         } else {
             print("couldn't add item!!")
