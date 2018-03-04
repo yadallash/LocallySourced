@@ -9,7 +9,12 @@
 import UIKit
 
 class FavoritesView: UIView {
-
+    
+    lazy var favoriteTableView: UITableView = {
+        let tView = UITableView()
+        tView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: "customCell")
+        return tView
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -19,7 +24,13 @@ class FavoritesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews(){
-        
+        setupTableView()
+    }
+    func setupTableView() {
+        addSubview(favoriteTableView)
+        favoriteTableView.snp.makeConstraints { (constraint) in
+            constraint.edges.equalTo(snp.edges)
+        }
     }
 
 }
