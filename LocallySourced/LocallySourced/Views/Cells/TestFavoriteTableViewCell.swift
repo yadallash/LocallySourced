@@ -8,8 +8,13 @@
 
 import UIKit
 import FoldingCell
+protocol FavoriteTableViewCellDelegate: class {
+    func submitButtonPressed(sender cell: TestFavoriteTableViewCell)
+}
 class TestFavoriteTableViewCell: FoldingCell {
-
+    var indexPath: IndexPath?
+    var farmersMarket: FarmersMarket?
+    weak var delegate: FavoriteTableViewCellDelegate?
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var boroughTitle: UILabel!
     @IBOutlet weak var marketAdInfo: UILabel!
@@ -41,7 +46,8 @@ class TestFavoriteTableViewCell: FoldingCell {
     }
     
     @IBAction func saveButtonAction(_ sender: UIButton) {
-       noteTextView.resignFirstResponder()
+        noteTextView.resignFirstResponder()
+        delegate?.submitButtonPressed(sender: self)
     }
     
     

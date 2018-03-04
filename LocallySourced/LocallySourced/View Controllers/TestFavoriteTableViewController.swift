@@ -25,13 +25,27 @@ class TestFavoriteTableViewController: UITableViewController {
             //            self.favoriteView.favoriteTableView.reloadData()
         }
     }
+    private func animateMarketTV() {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        let tableViewHeight = tableView.bounds.size.height
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: -tableViewHeight - 25)
+        }
+        var delayCounter:Double = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: delayCounter * 0.05, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 0.5
+        }
+    }
     
     var marketsByBouroghs = [String: [FarmersMarket]](){
         didSet{
             for (key,value) in marketsByBouroghs{
                 print("Bourogh: \(key), and markets: \(value)")
             }
-            self.tableView.reloadData()
         }
         
     }
@@ -60,6 +74,7 @@ class TestFavoriteTableViewController: UITableViewController {
         kRowsCount = favoritFarmersMarkets.count
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        animateMarketTV()
     }
     func configNavBar(){
         let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
@@ -107,38 +122,33 @@ extension TestFavoriteTableViewController{
         guard let marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return cell}
         let marketSetup = marketPlaces[indexPath.row]
         cell.setupCell(from: marketSetup)
+        cell.delegate = self
+        cell.indexPath = indexPath
+        cell.farmersMarket = marketSetup
         return cell
     }
 }
 
 //MARK: tableView Delegate
-extension TestFavoriteTableViewController{
+extension TestFavoriteTableViewController: FavoriteTableViewCellDelegate{
+    func submitButtonPressed(sender cell: TestFavoriteTableViewCell) {
+        guard let market = cell.farmersMarket, let indexPath = cell.indexPath else {
+            return
+        }
+        animatingFoldingCell(for: cell, indexPath: indexPath)
+        if let notes = cell.noteTextView.text {
+            market.notes = notes
+        }
+    }
+
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let cell = tableView.cellForRow(at: indexPath) as? TestFavoriteTableViewCell else{
             return
         }
         
-        if cell.isAnimating() {
-            return
-        }
-        
-        var duration = 0.0
-        let cellIsCollapsed = cellHeights[indexPath.section][indexPath.row] == kCloseCellHeight
-        if cellIsCollapsed {
-            cellHeights[indexPath.section][indexPath.row] = kOpenCellHeight
-            cell.unfold(true, animated: true, completion: nil)
-            duration = 0.5
-        } else {
-            cellHeights[indexPath.section][indexPath.row] = kCloseCellHeight
-            cell.unfold(false, animated: true, completion: nil)
-            duration = 0.8
-        }
-        
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }, completion: nil)
+      animatingFoldingCell(for: cell, indexPath: indexPath)
     }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
             
@@ -155,6 +165,27 @@ extension TestFavoriteTableViewController{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeights[indexPath.section][indexPath.row]
     }
-    
+   private func animatingFoldingCell(for cell: TestFavoriteTableViewCell, indexPath: IndexPath){
+        if cell.isAnimating() {
+            return
+        }
+        var duration = 0.0
+        let cellIsCollapsed = cellHeights[indexPath.section][indexPath.row] == kCloseCellHeight
+        if cellIsCollapsed {
+            cellHeights[indexPath.section][indexPath.row] = kOpenCellHeight
+            cell.unfold(true, animated: true, completion: nil)
+            duration = 0.5
+        } else {
+            cellHeights[indexPath.section][indexPath.row] = kCloseCellHeight
+            cell.unfold(false, animated: true, completion: nil)
+            duration = 0.8
+        }
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }, completion: nil)
+    }
+
 }
 
