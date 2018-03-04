@@ -28,7 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let shoppingListsViewController = ShoppingListsViewController()
         let shoppingListsNavigationController = UINavigationController(rootViewController: shoppingListsViewController)
         shoppingListsNavigationController.tabBarItem = UITabBarItem(title: "Shopping Lists", image: nil, selectedImage: nil)
-        tabViewController.viewControllers = [navigationHomeController, navigationFavoriteViewController,shoppingListsNavigationController]
+        //instance of testFavorites
+        let testFavoriteTableViewController = TestFavoriteTableViewController.storyBoardInstance()
+        let testNavigationController = UINavigationController(rootViewController: testFavoriteTableViewController)
+        testNavigationController.tabBarItem = UITabBarItem(title: "test Fav", image: nil, selectedImage: nil)
+        tabViewController.viewControllers = [navigationHomeController, navigationFavoriteViewController,shoppingListsNavigationController, testNavigationController]
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabViewController
         window?.makeKeyAndVisible()

@@ -7,10 +7,11 @@
 //
 
 import UIKit
-
+import FoldingCell
 class FavoritesViewController: UIViewController {
-    let favoriteView = FavoritesView()
-    var favoritFarmersMarkets = [FarmersMarket](){
+
+    lazy var favoriteView = FavoritesView()
+    var favoritFarmersMarkets = [FarmersMarket]() {
         didSet{
             for market in favoritFarmersMarkets{
                 if marketsByBouroghs[(market.facilitycity?.rawValue)!] != nil {
@@ -22,6 +23,7 @@ class FavoritesViewController: UIViewController {
 //            self.favoriteView.favoriteTableView.reloadData()
         }
     }
+
     var marketsByBouroghs = [String: [FarmersMarket]](){
         didSet{
             for (key,value) in marketsByBouroghs{
@@ -37,7 +39,7 @@ class FavoritesViewController: UIViewController {
         }
         return arr
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -84,10 +86,12 @@ extension FavoritesViewController: UITableViewDataSource{
         return sectionKey[section]
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? FavoriteTableViewCell else{
+            return UITableViewCell()
+        }
         
         guard let marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return cell}
-        cell.textLabel?.text = marketPlaces[indexPath.row].facilityname
+        cell.detailView.marketNameLabel.text = marketPlaces[indexPath.row].facilityname
         return cell
     }
     
@@ -96,4 +100,6 @@ extension FavoritesViewController: UITableViewDataSource{
 //MARK: - tableView delegates
 extension FavoritesViewController: UITableViewDelegate{
     
+
 }
+

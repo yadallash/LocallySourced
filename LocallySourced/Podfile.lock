@@ -1,18 +1,21 @@
 PODS:
+  - FoldingCell (3.0.2)
   - Kingfisher (4.6.1)
   - SnapKit (4.0.0)
   - Toucan (1.0.0)
 
 DEPENDENCIES:
+  - FoldingCell
   - Kingfisher
   - SnapKit
   - Toucan
 
 SPEC CHECKSUMS:
+  FoldingCell: ec0b975ad8c06378c9a2905c83bf8216235a6a94
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: c9cd0c184146238fc5f46e79da4380afe3f2780e
+PODFILE CHECKSUM: 93c4114b87f1e62dbcad52f5841a6ef9a51ecec6
 
 COCOAPODS: 1.4.0

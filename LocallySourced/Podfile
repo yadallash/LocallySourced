@@ -13,6 +13,7 @@ target 'LocallySourced' do
   pod 'SnapKit'
   pod 'Toucan'
   pod 'Kingfisher'
+pod 'FoldingCell'
   target 'LocallySourcedTests' do
     inherit! :search_paths
     # Pods for testing

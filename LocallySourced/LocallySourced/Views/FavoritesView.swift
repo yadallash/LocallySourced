@@ -12,7 +12,7 @@ class FavoritesView: UIView {
     
     lazy var favoriteTableView: UITableView = {
         let tView = UITableView()
-        tView.register(UITableViewCell.self, forCellReuseIdentifier: "defaultCell")
+        tView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: "customCell")
         return tView
     }()
     override init(frame: CGRect) {
