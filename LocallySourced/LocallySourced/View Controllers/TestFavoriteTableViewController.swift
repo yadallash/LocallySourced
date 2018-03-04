@@ -138,6 +138,7 @@ extension TestFavoriteTableViewController: FavoriteTableViewCellDelegate{
         animatingFoldingCell(for: cell, indexPath: indexPath)
         if let notes = cell.noteTextView.text {
             market.notes = notes
+            FileManagerHelper.manager.updateFarmersMarket(market, withNewNotes: notes)
         }
     }
 
