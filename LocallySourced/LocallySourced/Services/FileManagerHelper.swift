@@ -105,7 +105,7 @@ class FileManagerHelper {
     //this function will remove the farmers market from saved
     func removeFarmersMarket(_ farmersMarket: FarmersMarket) {
         if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
-            return savedMarket.facilityname == farmersMarket.facilityname && savedMarket.latitude == farmersMarket.latitude && savedMarket.longitude == farmersMarket.longitude
+            return savedMarket.facilityname == farmersMarket.facilityname && savedMarket.facilitycity == farmersMarket.facilitycity && savedMarket.facilityzipcode == farmersMarket.facilityzipcode
         }) {
             savedFarmersMarkets.remove(at: index)
             print("removed market!!")
@@ -123,6 +123,34 @@ class FileManagerHelper {
             print("removed shopping list!")
         } else {
             print("couldn't delete shopping list!!")
+        }
+    }
+    
+    //this function will remove the item from the shopping list
+    func removeItem(_ item: Item, fromShoppingList shoppingList: List) {
+        if let listIndex = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }), let itemIndex = savedShoppingLists[listIndex].items.index(where: { (savedItem) -> Bool in
+            return savedItem.name == item.name
+        }) {
+            savedShoppingLists[listIndex].items.remove(at: itemIndex)
+            print("removed item from shopping list!")
+        } else {
+            print("couldn't delete item from shopping list!!")
+        }
+    }
+    
+    //this function lets you update the item amount for item in the shopping list
+    func updateItem(_ item: Item, forShoppingList shoppingList: List) {
+        if let listIndex = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }), let itemIndex = savedShoppingLists[listIndex].items.index(where: { (savedItem) -> Bool in
+            return savedItem.name == item.name
+        }) {
+            savedShoppingLists[listIndex].items[itemIndex] = item
+            print("updated item from shopping list!")
+        } else {
+            print("couldn't update item from shopping list!!")
         }
     }
     
