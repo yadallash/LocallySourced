@@ -28,6 +28,10 @@
 		81941F99204B2835009DC98B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F98204B2835009DC98B /* List.swift */; };
 		81941F9B204B2880009DC98B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9A204B2880009DC98B /* Item.swift */; };
 		81941F9F204B2C70009DC98B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9E204B2C70009DC98B /* LocationService.swift */; };
+		81941FA1204B5608009DC98B /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */; };
+		81941FA4204B6FA9009DC98B /* TestFav.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941FA3204B6FA9009DC98B /* TestFav.storyboard */; };
+		81941FA6204B70A3009DC98B /* TestFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */; };
+		81941FA8204B7127009DC98B /* TestFavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */; };
 		81E386CD204B2189003905D0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CC204B2189003905D0 /* DetailView.swift */; };
 		81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CE204B46BE003905D0 /* UIColor+Extension.swift */; };
 		81E386D1204B50C6003905D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E386D0204B50C6003905D0 /* Assets.xcassets */; };
@@ -85,6 +89,10 @@
 		81941F98204B2835009DC98B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		81941F9A204B2880009DC98B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		81941F9E204B2C70009DC98B /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		81941FA3204B6FA9009DC98B /* TestFav.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestFav.storyboard; sourceTree = "<group>"; };
+		81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteTableViewController.swift; sourceTree = "<group>"; };
 		81E386CC204B2189003905D0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		81E386CE204B46BE003905D0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		81E386D0204B50C6003905D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		81941F48204AF297009DC98B /* LocallySourced */ = {
 			isa = PBXGroup;
 			children = (
+				81941FA2204B6F85009DC98B /* StoryBoards */,
 				81941F7A204AF2E9009DC98B /* Views */,
 				81941F7B204AF2F4009DC98B /* Services */,
 				81941F7C204AF300009DC98B /* Models */,
@@ -198,6 +207,7 @@
 				81941F81204B020C009DC98B /* FavoritesViewController.swift */,
 				81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */,
 				F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */,
+				81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -248,6 +258,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		81941FA2204B6F85009DC98B /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				81941FA3204B6FA9009DC98B /* TestFav.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
 		8AA34273860BC43F3A274F51 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +284,8 @@
 			children = (
 				F4CE56CD204B2CDC0024F011 /* ItemCell.swift */,
 				81800F50204B393E00FE189C /* MarketCell.swift */,
+				81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */,
+				81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -388,6 +408,8 @@
 			files = (
 				81E386D1204B50C6003905D0 /* Assets.xcassets in Resources */,
 				81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */,
+				81941FA4204B6FA9009DC98B /* TestFav.storyboard in Resources */,
+				81941F51204AF297009DC98B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,14 +566,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
@@ -589,7 +611,10 @@
 				81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */,
 				81941F9F204B2C70009DC98B /* LocationService.swift in Sources */,
 				81E386CD204B2189003905D0 /* DetailView.swift in Sources */,
+				81941FA8204B7127009DC98B /* TestFavoriteTableViewController.swift in Sources */,
 				81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */,
+				81941FA6204B70A3009DC98B /* TestFavoriteTableViewCell.swift in Sources */,
+				81941FA1204B5608009DC98B /* FavoriteTableViewCell.swift in Sources */,
 				F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
