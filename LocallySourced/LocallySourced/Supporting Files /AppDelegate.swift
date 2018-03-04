@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //instance of testFavorites
         let testFavoriteTableViewController = TestFavoriteTableViewController.storyBoardInstance()
         let testNavigationController = UINavigationController(rootViewController: testFavoriteTableViewController)
-        testNavigationController.tabBarItem = UITabBarItem(title: "test Fav", image: nil, selectedImage: nil)
-        tabViewController.viewControllers = [navigationHomeController, navigationFavoriteViewController,shoppingListsNavigationController, testNavigationController]
+        testNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: nil, selectedImage: nil)
+        tabViewController.viewControllers = [navigationHomeController, navigationFavoriteViewController, testNavigationController]
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabViewController
         window?.makeKeyAndVisible()
