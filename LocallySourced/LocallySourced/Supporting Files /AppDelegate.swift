@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Load
+        FileManagerHelper.manager.loadSavedFarmersMarket()
+        FileManagerHelper.manager.loadSavedShoppingLists()
+
         let tabViewController = UITabBarController()
         //instance of the homeViewController
         let marketsViewiewController = MarketsViewController()
