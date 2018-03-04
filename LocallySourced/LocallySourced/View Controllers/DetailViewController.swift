@@ -14,11 +14,11 @@ class DetailViewController: UIViewController {
 
     private lazy var detailView = DetailView(frame: self.view.safeAreaLayoutGuide.layoutFrame)
     
-    private var market = FarmersMarket()
+    private var market: FarmersMarket!
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+//    }
     
     init(market: FarmersMarket) {
         self.market = market
