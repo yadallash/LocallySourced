@@ -12,7 +12,7 @@ class TestFavoriteTableViewController: UITableViewController {
     let kCloseCellHeight: CGFloat = 179
     let kOpenCellHeight: CGFloat = 488
     var kRowsCount = 10
-    var cellHeights: [CGFloat] = []
+    var cellHeights: [[CGFloat]] = [[]]
     var favoritFarmersMarkets = [FarmersMarket]() {
         didSet{
             for market in favoritFarmersMarkets{
@@ -52,7 +52,11 @@ class TestFavoriteTableViewController: UITableViewController {
         
     }
     private func setupCells() {
-        cellHeights = Array(repeating: kCloseCellHeight, count: marketsByBouroghs.count + 1)
+        cellHeights = Array(repeating: [kCloseCellHeight], count: sectionKey.count)
+        for i in 0..<sectionKey.count{
+            let arrayOfMarkets = marketsByBouroghs[sectionKey[i]]
+            cellHeights[i] = Array(repeating: kCloseCellHeight, count: arrayOfMarkets!.count)
+        }
         kRowsCount = favoritFarmersMarkets.count
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -102,8 +106,7 @@ extension TestFavoriteTableViewController{
         cell.durationsForCollapsedState = durations
         guard let marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return cell}
         let marketSetup = marketPlaces[indexPath.row]
-        cell.marketTitle.text = marketSetup.facilityname
-        cell.marketTitle.font = UIFont.boldSystemFont(ofSize: 30)
+        cell.setupCell(from: marketSetup)
         return cell
     }
 }
@@ -121,13 +124,13 @@ extension TestFavoriteTableViewController{
         }
         
         var duration = 0.0
-        let cellIsCollapsed = cellHeights[indexPath.row] == kCloseCellHeight
+        let cellIsCollapsed = cellHeights[indexPath.section][indexPath.row] == kCloseCellHeight
         if cellIsCollapsed {
-            cellHeights[indexPath.row] = kOpenCellHeight
+            cellHeights[indexPath.section][indexPath.row] = kOpenCellHeight
             cell.unfold(true, animated: true, completion: nil)
             duration = 0.5
         } else {
-            cellHeights[indexPath.row] = kCloseCellHeight
+            cellHeights[indexPath.section][indexPath.row] = kCloseCellHeight
             cell.unfold(false, animated: true, completion: nil)
             duration = 0.8
         }
@@ -143,14 +146,14 @@ extension TestFavoriteTableViewController{
                 return
         }
         cell.backgroundColor = .clear
-        if cellHeights[indexPath.row] == kCloseCellHeight {
+        if cellHeights[indexPath.section][indexPath.row] == kCloseCellHeight {
             cell.unfold(false, animated: false, completion: nil)
         } else {
             cell.unfold(true, animated: false, completion: nil)
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath.row]
+        return cellHeights[indexPath.section][indexPath.row]
     }
     
 }
