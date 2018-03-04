@@ -61,7 +61,14 @@ class FileManagerHelper {
     //this func checks if this farmersMarket has been saved before
     func alreadySavedFarmersMarket(_ farmersMarket: FarmersMarket) -> Bool {
         return savedFarmersMarkets.contains(where: { (market) -> Bool in
-            return market.facilityname == farmersMarket.facilityname && market.latitude == farmersMarket.latitude && market.longitude == farmersMarket.longitude
+            return market.facilityname == farmersMarket.facilityname && market.facilitycity == farmersMarket.facilitycity && market.facilityzipcode == farmersMarket.facilityzipcode
+        })
+    }
+    
+    //this func checks if this shoppingList has been saved before
+    func alreadySavedShoppingList(_ shoppingList: List) -> Bool {
+        return savedShoppingLists.contains(where: { (list) -> Bool in
+            return list.title == shoppingList.title
         })
     }
     
