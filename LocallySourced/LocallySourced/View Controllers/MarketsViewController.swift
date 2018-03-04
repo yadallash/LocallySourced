@@ -15,7 +15,7 @@ class MarketsViewController: UIViewController {
     
     public var markets = [FarmersMarket]() {
         didSet {
-            self.marketView.marketTableView.reloadData()
+            animateMarketTV()
         }
     }
     var filteredMarkets: [FarmersMarket] {
@@ -32,11 +32,7 @@ class MarketsViewController: UIViewController {
             return markets
         }
     }
-    var filteredByCity: String? {
-        didSet {
-            self.marketView.marketTableView.reloadData()
-        }
-    }
+    var filteredByCity: String?
     
     var cities = [Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue, "All"]
 
@@ -62,10 +58,8 @@ class MarketsViewController: UIViewController {
     }
     @objc private func filterButtonPressed() {
         if marketView.buttonTableView.isHidden == true {
-            marketView.buttonTableView.snp.makeConstraints { (make) in
-                make.height.equalTo(self.marketView).multipliedBy(0.4)
-            }
             marketView.buttonTableView.isHidden = false
+            animateDropdownTV()
         } else {
             marketView.buttonTableView.isHidden = true
         }
@@ -73,6 +67,38 @@ class MarketsViewController: UIViewController {
     
     private func loadMarkets() {
         FarmersMarketAPIClient.manager.getMarkets(completion: {self.markets = $0}, errorHandler: {print($0)})
+    }
+    
+    private func animateMarketTV() {
+        marketView.marketTableView.reloadData()
+        let cells = marketView.marketTableView.visibleCells
+        let tableViewHeight = marketView.marketTableView.bounds.size.height
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: -tableViewHeight - 25)
+        }
+        var delayCounter:Double = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: delayCounter * 0.05, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 0.5
+        }
+    }
+    
+    private func animateDropdownTV() {
+        marketView.buttonTableView.reloadData()
+        let cells = marketView.buttonTableView.visibleCells
+        let tableViewHeight = marketView.buttonTableView.bounds.size.height
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: -50, y: -tableViewHeight)
+        }
+        var delayCounter:Double = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: delayCounter * 0.05, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 0.5
+        }
     }
 
 }
@@ -83,9 +109,12 @@ extension MarketsViewController: UITableViewDelegate {
             marketView.filterButton.setTitle(cities[indexPath.row], for: .normal)
             self.filteredByCity = self.marketView.filterButton.titleLabel?.text
             marketView.buttonTableView.isHidden = true
-            self.marketView.marketTableView.reloadData()
+            animateMarketTV()
+//            self.marketView.marketTableView.reloadData()
         case marketView.marketTableView:
-            navigationController?.pushViewController(DetailViewController(), animated: true)
+            let market = markets[indexPath.row]
+            let detailVC = DetailViewController(market: market)
+            navigationController?.pushViewController(detailVC, animated: true)
         default:
             break
         }

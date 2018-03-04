@@ -57,6 +57,7 @@ class MarketsView: UIView {
             view.width.equalTo(filterButton)
             view.top.equalTo(filterButton.snp.bottom)
             view.trailing.equalTo(self)
+            view.height.equalTo(self).multipliedBy(0.4)
         }
         
         marketTableView.snp.makeConstraints { (view) in
