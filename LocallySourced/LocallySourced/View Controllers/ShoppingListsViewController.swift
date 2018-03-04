@@ -98,6 +98,10 @@ extension ShoppingListsViewController: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = DetailShoppingListViewController(list: shoppingList[indexPath.row])
+        navigationController?.pushViewController(detail, animated: true)
+    }
 }
 
 
