@@ -24,7 +24,7 @@ class FarmersMarket: Codable {
     let facilityzipcode: String?
     let latitude: String
     let longitude: String
-    var notes: String?
+    var notes: String? = "You can add some notes here:"
 }
 
 
