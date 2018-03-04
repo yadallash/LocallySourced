@@ -56,7 +56,7 @@ class DetailView: UIView {
     
     lazy var yelpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Yelp Reviews", for: .normal)
+        button.setTitle("Farmers Markets in ", for: .normal)
         //to do - set up font, color, look
         button.setTitleColor(UIColor.buttonBlue, for: .normal)
         return button

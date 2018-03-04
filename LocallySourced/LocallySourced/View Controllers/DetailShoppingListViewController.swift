@@ -8,32 +8,30 @@
 
 import UIKit
 
-// MARK: - Testing Struct
-struct GroceryItem {
-    
-    let name: String
-    let quantity: Double
-    var completed: Bool
-    
-    init(name: String, quantity: Double, completed: Bool) {
-        self.name = name
-        self.quantity = quantity
-        self.completed = completed
-    }
-}
-
 class DetailShoppingListViewController: UIViewController {
     
     // MARK: - Properties
     var detailShoppingListView = DetailShoppingListView()
     let resusableCell = "ItemCell"
-    var shoppingList = [GroceryItem]() {
+    var shoppingList: List! {
         didSet {
             DispatchQueue.main.async {
                 self.detailShoppingListView.shoppingListTableView.reloadData()
             }
         }
     }
+    
+    // MARK: - Init (Dependency injection)
+    var favorite: [FarmersMarket]
+    init(fav: [FarmersMarket]){
+        self.favorite = fav
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     // Mark: - Life cycle
     override func viewDidLoad() {
@@ -46,17 +44,17 @@ class DetailShoppingListViewController: UIViewController {
     }
     
     // MARK: - Functions
-    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-        if !isCompleted {
-            cell.accessoryType = .none
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
-        } else {
-            cell.accessoryType = .checkmark
-            cell.textLabel?.textColor = UIColor.gray
-            cell.detailTextLabel?.textColor = UIColor.gray
-        }
-    }
+    //    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+    //        if !isCompleted {
+    //            cell.accessoryType = .none
+    //            cell.textLabel?.textColor = UIColor.black
+    //            cell.detailTextLabel?.textColor = UIColor.black
+    //        } else {
+    //            cell.accessoryType = .checkmark
+    //            cell.textLabel?.textColor = UIColor.gray
+    //            cell.detailTextLabel?.textColor = UIColor.gray
+    //        }
+    //    }
     
     private func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addItem))
@@ -68,9 +66,10 @@ class DetailShoppingListViewController: UIViewController {
         let alert = UIAlertController(title: "Grocery Item", message: "Add an Item", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-                                        let textField = alert.textFields![0]
-                                        let groceryItem = GroceryItem(name: textField.text!, quantity: 0, completed: false)
-                                        self.shoppingList.append(groceryItem)
+            let textField = alert.textFields![0]
+            let item = Item(name: textField.text!, amount: 0, completed: false)
+            FileManagerHelper.manager.addItem(item, toShoppingList: self.shoppingList)
+            self.shoppingList.items.append(item)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alert.addTextField()
@@ -85,21 +84,22 @@ class DetailShoppingListViewController: UIViewController {
 extension DetailShoppingListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingList.count
+        return shoppingList.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: resusableCell, for: indexPath) as! ItemCell
-        let item = shoppingList[indexPath.row]
+        let item = shoppingList.items[indexPath.row]
         cell.configureCell(with: item)
-        toggleCellCheckbox(cell, isCompleted: item.completed)
+        //        toggleCellCheckbox(cell, isCompleted: item.completed)
         return cell
     }
     
     // defines tableView editing style. Set to .delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            shoppingList.remove(at: indexPath.row)
+            shoppingList.items.remove(at: indexPath.row)
+            FileManagerHelper.manager.removeItem(shoppingList.items[indexPath.row], fromShoppingList: self.shoppingList)
             tableView.reloadData()
         }
     }
@@ -110,10 +110,12 @@ extension DetailShoppingListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        var groceryItem = shoppingList[indexPath.row]
-        let toggledCompletion = !groceryItem.completed
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        groceryItem.completed = toggledCompletion
+        var groceryItem = shoppingList.items[indexPath.row]
+        groceryItem.completed = !groceryItem.completed
+        //        let toggledCompletion = !groceryItem.completed
+        //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+        //        groceryItem.completed = toggledCompletion
+//        cell.deleg
         tableView.reloadData()
     }
     
@@ -121,5 +123,17 @@ extension DetailShoppingListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+}
+
+extension DetailShoppingListViewController: ItemCellDelegate {
+    func stepperButtonPressed() {
+
+    }
+    
+    func checkedButtonPressed() {
+        
+    }
+    
+    
 }
 
