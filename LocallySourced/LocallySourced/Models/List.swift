@@ -9,7 +9,7 @@
 import Foundation
 class List: Codable {
     let title: String
-    let items: [Item]
+    var items: [Item]
     init(title: String, items: [Item]) {
         self.title = title
         self.items = items

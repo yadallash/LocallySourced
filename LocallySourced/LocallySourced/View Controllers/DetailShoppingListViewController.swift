@@ -39,6 +39,10 @@ class DetailShoppingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         detailShoppingListView.shoppingListTableView.delegate = self
+        detailShoppingListView.shoppingListTableView.dataSource = self
+        configureNavBar()
+        self.view.addSubview(detailShoppingListView)
+        self.view.backgroundColor = .red
     }
     
     // MARK: - Functions
@@ -56,6 +60,7 @@ class DetailShoppingListViewController: UIViewController {
     
     private func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addItem))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.black
     }
     
     // adds items to shoppingList, via alertController
@@ -73,6 +78,7 @@ class DetailShoppingListViewController: UIViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
+    
 }
 
 // MARK: - UITableViewDataSource

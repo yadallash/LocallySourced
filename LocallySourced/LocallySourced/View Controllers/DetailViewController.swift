@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     init(market: FarmersMarket) {
         self.market = market
         
@@ -57,9 +57,14 @@ class DetailViewController: UIViewController {
     }
     
     private func setUpNavigation() {
+        var heartImage: UIImage?
+        let alreadySaved = FileManagerHelper.manager.alreadySavedFarmersMarket(market)
         //if not favorited
-        let heartImage: UIImage? = UIImage(named: "unfillHeartIcon")?.withRenderingMode(.alwaysOriginal)
-        //if favorited - to do
+        if alreadySaved {
+            heartImage = UIImage(named: "fillHeartIcon")?.withRenderingMode(.alwaysOriginal)
+        } else { //if favorited
+            heartImage = UIImage(named: "unfillHeartIcon")?.withRenderingMode(.alwaysOriginal)
+        }
         
         let saveBarButtonItem = UIBarButtonItem(image: heartImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveMarket(sender:)))
         let addItemBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shoppingIcon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(addItemToShoppingList))
