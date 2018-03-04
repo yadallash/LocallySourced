@@ -42,7 +42,6 @@ class TestFavoriteTableViewCell: FoldingCell {
     
     @IBAction func saveButtonAction(_ sender: UIButton) {
        noteTextView.resignFirstResponder()
-        
     }
     
     
