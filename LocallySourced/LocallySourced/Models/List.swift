@@ -8,7 +8,7 @@
 
 import Foundation
 class List: Codable {
-    let title: String
+    var title: String
     var items: [Item]
     init(title: String, items: [Item]) {
         self.title = title
