@@ -93,6 +93,7 @@ class FileManagerHelper {
             if savedShoppingLists[index].items.contains(where: { (savedItem) -> Bool in
                 return savedItem.name == item.name
             }) {
+                print("already added this item before")
                 return false
             }
             savedShoppingLists[index].items.append(item)
@@ -153,6 +154,30 @@ class FileManagerHelper {
             print("updated item from shopping list!")
         } else {
             print("couldn't update item from shopping list!!")
+        }
+    }
+    
+    //this function lets you update the shopping list name
+    func updateShoppingList(_ list: List, withName name: String) {
+        if let index = savedShoppingLists.index(where: { (savedList) -> Bool in
+            return savedList.title == list.title
+        }) {
+            savedShoppingLists[index].title = name
+            print("changed shopping list name!!")
+        } else {
+            print("couldn't change shopping list name!!")
+        }
+    }
+    
+    //this function lets you update the favorites
+    func updateFarmersMarket(_ market: FarmersMarket, withNewNotes notes: String) {
+        if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
+            return savedMarket.facilityname == market.facilityname && savedMarket.facilitycity?.rawValue == market.facilitycity?.rawValue && savedMarket.facilityzipcode == market.facilityzipcode
+        }) {
+            savedFarmersMarkets[index].notes = notes
+            print("updated farmers market notes!")
+        } else {
+            print("couldn't update farmers market notes")
         }
     }
     
