@@ -12,6 +12,8 @@ class ShoppingListsView: UIView {
     
     lazy var listTableView: UITableView = {
         let tv = UITableView()
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: "ListCell")
+        tv.backgroundColor = .clear
         return tv
     }()
 

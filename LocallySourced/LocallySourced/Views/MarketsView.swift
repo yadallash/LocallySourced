@@ -21,6 +21,7 @@ class MarketsView: UIView {
     lazy var buttonTableView: UITableView = {
         let tv = UITableView()
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "FilterCell")
+        tv.backgroundColor = .clear
         tv.isHidden = true
         return tv
     }()
@@ -28,6 +29,7 @@ class MarketsView: UIView {
     lazy var marketTableView: UITableView = {
         let tv = UITableView()
         tv.register(MarketCell.self, forCellReuseIdentifier: "MarketCell")
+        tv.backgroundColor = .clear
         return tv
     }()
     
