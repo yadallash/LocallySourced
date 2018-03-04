@@ -22,9 +22,8 @@ class DetailShoppingListViewController: UIViewController {
     }
     
     // MARK: - Init (Dependency injection)
-    var favorite: [FarmersMarket]
-    init(fav: [FarmersMarket]){
-        self.favorite = fav
+    init(list: List){
+        self.shoppingList = list
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,6 +40,12 @@ class DetailShoppingListViewController: UIViewController {
         configureNavBar()
         self.view.addSubview(detailShoppingListView)
         self.view.backgroundColor = .red
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //need function to get specific list
+        
+        //reload
     }
     
     // MARK: - Functions
@@ -65,11 +70,11 @@ class DetailShoppingListViewController: UIViewController {
     @objc func addItem() {
         let alert = UIAlertController(title: "Grocery Item", message: "Add an Item", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
             let textField = alert.textFields![0]
             let item = Item(name: textField.text!, amount: 0, completed: false)
-            FileManagerHelper.manager.addItem(item, toShoppingList: self.shoppingList)
-            self.shoppingList.items.append(item)
+            FileManagerHelper.manager.addItem(item, toShoppingList: self!.shoppingList)
+            self?.detailShoppingListView.shoppingListTableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alert.addTextField()
