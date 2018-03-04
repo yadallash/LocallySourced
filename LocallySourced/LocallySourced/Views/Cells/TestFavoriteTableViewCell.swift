@@ -19,6 +19,7 @@ class TestFavoriteTableViewCell: FoldingCell {
     
     @IBOutlet weak var containerMask: UIView!
     
+    @IBOutlet weak var containerMarketImage: UIImageView!
     @IBOutlet weak var foregroundMask: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var boroughTitle: UILabel!
@@ -46,6 +47,7 @@ class TestFavoriteTableViewCell: FoldingCell {
         marketTitle.text = farmersMarket.facilityname
         marketTitle.font = UIFont.boldSystemFont(ofSize: 30)
         boroughTitle.text = farmersMarket.facilitycity?.rawValue
+        
         marketAdInfo.text = "\(farmersMarket.facilityaddinfo?.components(separatedBy: ".").first ?? "There is no more informaion abou the market") ."
         guard let notes = farmersMarket.notes else {
             noteTextView.text = "You can add you notes here"

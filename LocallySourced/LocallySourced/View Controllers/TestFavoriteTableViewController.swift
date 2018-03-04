@@ -123,10 +123,16 @@ extension TestFavoriteTableViewController{
         let marketSetup = marketPlaces[indexPath.row]
         cell.setupCell(from: marketSetup)
         cell.delegate = self
-        cell.indexPath = indexPath
-        cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket4")
         cell.foregroundMask.layer.opacity = 0.25
         cell.containerMask.layer.opacity = 0.35
+        cell.indexPath = indexPath
+        if indexPath.row % 2 == 0{
+            cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket4")
+            cell.containerMarketImage.image = #imageLiteral(resourceName: "farmersMarket4")
+        }else{
+            cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket3")
+            cell.containerMarketImage.image = #imageLiteral(resourceName: "farmersMarket3")
+        }
         cell.farmersMarket = marketSetup
         return cell
     }
