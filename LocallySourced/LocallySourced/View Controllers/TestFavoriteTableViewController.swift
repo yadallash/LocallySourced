@@ -52,7 +52,7 @@ class TestFavoriteTableViewController: UITableViewController {
         
     }
     private func setupCells() {
-        cellHeights = Array(repeating: kCloseCellHeight, count: marketsByBouroghs.count)
+        cellHeights = Array(repeating: kCloseCellHeight, count: marketsByBouroghs.count + 1)
         kRowsCount = favoritFarmersMarkets.count
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
