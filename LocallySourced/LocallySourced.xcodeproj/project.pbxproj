@@ -36,6 +36,7 @@
 		81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CE204B46BE003905D0 /* UIColor+Extension.swift */; };
 		81E386D1204B50C6003905D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E386D0204B50C6003905D0 /* Assets.xcassets */; };
 		B3827E67095BFAE95A3915C9 /* Pods_LocallySourcedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */; };
+		F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */; };
 		F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */; };
 		F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CD204B2CDC0024F011 /* ItemCell.swift */; };
 		F4CE56D0204B2D0E0024F011 /* DetailShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */; };
@@ -101,6 +102,7 @@
 		C3C6AD24EFA119CAFF7496B2 /* Pods-LocallySourced.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.release.xcconfig"; sourceTree = "<group>"; };
 		D9FB3C1C2EA80682224E866A /* Pods_LocallySourcedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourcedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E340F71690AC0D4FBDA22CF5 /* Pods-LocallySourcedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailShoppingListViewController.swift; sourceTree = "<group>"; };
 		F4CE56CD204B2CDC0024F011 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShoppingListView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */,
 				F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */,
 				81E386CC204B2189003905D0 /* DetailView.swift */,
+				F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */,
 				F4CE56CC204B2CC80024F011 /* Cells */,
 			);
 			path = Views;
@@ -409,7 +412,6 @@
 				81E386D1204B50C6003905D0 /* Assets.xcassets in Resources */,
 				81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */,
 				81941FA4204B6FA9009DC98B /* TestFav.storyboard in Resources */,
-				81941F51204AF297009DC98B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */,
+				F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */,
 				F4CE56D0204B2D0E0024F011 /* DetailShoppingListView.swift in Sources */,
 				F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */,
 				81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */,
@@ -605,7 +608,6 @@
 				81941F99204B2835009DC98B /* Item.swift in Sources */,
 				81941F88204B036A009DC98B /* FavoritesView.swift in Sources */,
 				81941F84204B0341009DC98B /* MarketsView.swift in Sources */,
-				81941F92204B132F009DC98B /* ShoppingListViewController.swift in Sources */,
 				81941F80204B017C009DC98B /* DetailViewController.swift in Sources */,
 				81800F51204B393E00FE189C /* MarketCell.swift in Sources */,
 				81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */,
