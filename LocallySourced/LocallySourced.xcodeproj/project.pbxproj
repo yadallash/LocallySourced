@@ -24,8 +24,8 @@
 		81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F8F204B118E009DC98B /* FarmersMarket.swift */; };
 		81941F95204B1806009DC98B /* FarmersMarketAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */; };
 		81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F96204B1B78009DC98B /* FileManagerHelper.swift */; };
-		81941F99204B2835009DC98B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F98204B2835009DC98B /* List.swift */; };
-		81941F9B204B2880009DC98B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9A204B2880009DC98B /* Item.swift */; };
+		81941F99204B2835009DC98B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F98204B2835009DC98B /* Item.swift */; };
+		81941F9B204B2880009DC98B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9A204B2880009DC98B /* List.swift */; };
 		81941F9F204B2C70009DC98B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9E204B2C70009DC98B /* LocationService.swift */; };
 		81E386CD204B2189003905D0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CC204B2189003905D0 /* DetailView.swift */; };
 		81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CE204B46BE003905D0 /* UIColor+Extension.swift */; };
@@ -80,8 +80,8 @@
 		81941F8F204B118E009DC98B /* FarmersMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmersMarket.swift; sourceTree = "<group>"; };
 		81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmersMarketAPIClient.swift; sourceTree = "<group>"; };
 		81941F96204B1B78009DC98B /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
-		81941F98204B2835009DC98B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		81941F9A204B2880009DC98B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		81941F98204B2835009DC98B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		81941F9A204B2880009DC98B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		81941F9E204B2C70009DC98B /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		81E386CC204B2189003905D0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		81E386CE204B46BE003905D0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -239,8 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				81941F8F204B118E009DC98B /* FarmersMarket.swift */,
-				81941F98204B2835009DC98B /* List.swift */,
-				81941F9A204B2880009DC98B /* Item.swift */,
+				81941F98204B2835009DC98B /* Item.swift */,
+				81941F9A204B2880009DC98B /* List.swift */,
 				81E386CE204B46BE003905D0 /* UIColor+Extension.swift */,
 			);
 			path = Models;
@@ -572,12 +572,12 @@
 				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
 				81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */,
-				81941F9B204B2880009DC98B /* Item.swift in Sources */,
+				81941F9B204B2880009DC98B /* List.swift in Sources */,
 				81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */,
 				81941F7E204B00BC009DC98B /* NetworkHelper.swift in Sources */,
 				81941F95204B1806009DC98B /* FarmersMarketAPIClient.swift in Sources */,
 				81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */,
-				81941F99204B2835009DC98B /* List.swift in Sources */,
+				81941F99204B2835009DC98B /* Item.swift in Sources */,
 				81941F88204B036A009DC98B /* FavoritesView.swift in Sources */,
 				81941F84204B0341009DC98B /* HomeView.swift in Sources */,
 				81941F80204B017C009DC98B /* DetailViewController.swift in Sources */,
