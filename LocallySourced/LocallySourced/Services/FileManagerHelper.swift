@@ -31,6 +31,7 @@ class FileManagerHelper {
     private var savedShoppingLists = [List](){
         didSet{
             print(savedShoppingLists)
+            saveShoppingLists()
         }
     }
     //Saving Images To Disk
@@ -77,6 +78,7 @@ class FileManagerHelper {
         savedFarmersMarkets.append(farmersMarket)
         print("added new farmers market!!")
     }
+    
     // this function will add a new shopping list to be saved
     func addNewShoppingList(_ shoppingList: List) {
         savedShoppingLists.append(shoppingList)
