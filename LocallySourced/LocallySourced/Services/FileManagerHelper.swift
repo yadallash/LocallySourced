@@ -58,14 +58,102 @@ class FileManagerHelper {
         }
     }
     
+    //this func checks if this farmersMarket has been saved before
+    func alreadySavedFarmersMarket(_ farmersMarket: FarmersMarket) -> Bool {
+        return savedFarmersMarkets.contains(where: { (market) -> Bool in
+            return market.facilityname == farmersMarket.facilityname && market.facilitycity == farmersMarket.facilitycity && market.facilityzipcode == farmersMarket.facilityzipcode
+        })
+    }
+    
+    //this func checks if this shoppingList has been saved before
+    func alreadySavedShoppingList(_ shoppingList: List) -> Bool {
+        return savedShoppingLists.contains(where: { (list) -> Bool in
+            return list.title == shoppingList.title
+        })
+    }
+    
     // this function will add new farmersMarket to be saved
     func addNewFarmersMarket(_ farmersMarket: FarmersMarket) {
         savedFarmersMarkets.append(farmersMarket)
+        print("added new farmers market!!")
     }
     // this function will add a new shopping list to be saved
     func addNewShoppingList(_ shoppingList: List) {
         savedShoppingLists.append(shoppingList)
+        print("added new shopping list!!")
     }
+    
+    //this func adds items to a shopping list, and returns false when the shopping list already has this item, otherwise it returns true
+    func addItem(_ item: Item, toShoppingList shoppingList: List) -> Bool {
+        if let index = savedShoppingLists.index(where: { (list) -> Bool in
+            return list.title == shoppingList.title
+        }) {
+            if savedShoppingLists[index].items.contains(where: { (savedItem) -> Bool in
+                return savedItem.name == item.name
+            }) {
+                return false
+            }
+            savedShoppingLists[index].items.append(item)
+            print("added item!!")
+            return true
+        } else {
+            print("couldn't add item!!")
+            return false
+        }
+    }
+    
+    //this function will remove the farmers market from saved
+    func removeFarmersMarket(_ farmersMarket: FarmersMarket) {
+        if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
+            return savedMarket.facilityname == farmersMarket.facilityname && savedMarket.facilitycity == farmersMarket.facilitycity && savedMarket.facilityzipcode == farmersMarket.facilityzipcode
+        }) {
+            savedFarmersMarkets.remove(at: index)
+            print("removed market!!")
+        } else {
+            print("couldn't delete market!!")
+        }
+    }
+    
+    //this function will remove the shopping list from saved
+    func removeShoppingList(_ shoppingList: List) {
+        if let index = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }) {
+            savedShoppingLists.remove(at: index)
+            print("removed shopping list!")
+        } else {
+            print("couldn't delete shopping list!!")
+        }
+    }
+    
+    //this function will remove the item from the shopping list
+    func removeItem(_ item: Item, fromShoppingList shoppingList: List) {
+        if let listIndex = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }), let itemIndex = savedShoppingLists[listIndex].items.index(where: { (savedItem) -> Bool in
+            return savedItem.name == item.name
+        }) {
+            savedShoppingLists[listIndex].items.remove(at: itemIndex)
+            print("removed item from shopping list!")
+        } else {
+            print("couldn't delete item from shopping list!!")
+        }
+    }
+    
+    //this function lets you update the item amount for item in the shopping list
+    func updateItem(_ item: Item, forShoppingList shoppingList: List) {
+        if let listIndex = savedShoppingLists.index(where: { (savedShoppingList) -> Bool in
+            return savedShoppingList.title == shoppingList.title
+        }), let itemIndex = savedShoppingLists[listIndex].items.index(where: { (savedItem) -> Bool in
+            return savedItem.name == item.name
+        }) {
+            savedShoppingLists[listIndex].items[itemIndex] = item
+            print("updated item from shopping list!")
+        } else {
+            print("couldn't update item from shopping list!!")
+        }
+    }
+    
     //this function will retrieve the farmersMarket
     func retrieveSavedFarmersMarket() -> [FarmersMarket] {
         return savedFarmersMarkets

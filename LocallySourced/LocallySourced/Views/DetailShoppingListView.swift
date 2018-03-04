@@ -32,10 +32,11 @@ class DetailShoppingListView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+        backgroundColor = .yellow
         setupViews()
     }
     
+    // MARK: - Functions
     private func setupViews() {
         setupTableView()
     }
@@ -45,8 +46,8 @@ class DetailShoppingListView: UIView {
         addSubview(shoppingListTableView)
         shoppingListTableView.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
+            make.leading.equalTo(self)
+            make.trailing.equalTo(self)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             
         }

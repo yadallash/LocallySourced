@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Load
+        FileManagerHelper.manager.loadSavedFarmersMarket()
+        FileManagerHelper.manager.loadSavedShoppingLists()
+
         let tabViewController = UITabBarController()
         //instance of the homeViewController
         let marketsViewiewController = MarketsViewController()
@@ -32,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let testFavoriteTableViewController = TestFavoriteTableViewController.storyBoardInstance()
         let testNavigationController = UINavigationController(rootViewController: testFavoriteTableViewController)
         testNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: nil, selectedImage: nil)
-        tabViewController.viewControllers = [navigationHomeController, navigationFavoriteViewController, testNavigationController]
+        tabViewController.viewControllers = [navigationHomeController, testNavigationController]
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabViewController
         window?.makeKeyAndVisible()
