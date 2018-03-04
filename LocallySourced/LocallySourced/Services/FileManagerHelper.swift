@@ -175,6 +175,7 @@ class FileManagerHelper {
             return savedMarket.facilityname == market.facilityname && savedMarket.facilitycity?.rawValue == market.facilitycity?.rawValue && savedMarket.facilityzipcode == market.facilityzipcode
         }) {
             savedFarmersMarkets[index].notes = notes
+            saveFarmersMarket()
             print("updated farmers market notes!")
         } else {
             print("couldn't update farmers market notes")
@@ -229,10 +230,10 @@ class FileManagerHelper {
     func loadSavedShoppingLists(){
         let propertyListDecoder = PropertyListDecoder()
         do{
-        let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
-        let encodedData = try Data(contentsOf: phoneURL)
-        let storedModelArray =  try propertyListDecoder.decode([List].self, from: encodedData)
-        savedShoppingLists = storedModelArray
+            let phoneURL = dataFilePath(withPathName: shoppingListDataPath)
+            let encodedData = try Data(contentsOf: phoneURL)
+            let storedModelArray =  try propertyListDecoder.decode([List].self, from: encodedData)
+            savedShoppingLists = storedModelArray
         }
         catch{
             print(error.localizedDescription)
@@ -248,4 +249,3 @@ class FileManagerHelper {
         return paths[0]
     }
 }
-
