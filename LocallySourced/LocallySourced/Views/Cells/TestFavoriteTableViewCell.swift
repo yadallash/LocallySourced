@@ -10,6 +10,7 @@ import UIKit
 import FoldingCell
 class TestFavoriteTableViewCell: FoldingCell {
 
+ 
     @IBOutlet weak var marketTitle: UILabel!
     @IBOutlet weak var noteTextView: UITextView!
     

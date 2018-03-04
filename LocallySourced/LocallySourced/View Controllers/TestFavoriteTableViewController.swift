@@ -85,7 +85,10 @@ class TestFavoriteTableViewController: UITableViewController {
 extension TestFavoriteTableViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return marketsByBouroghs.count
+        return sectionKey.count
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionKey[section]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,7 +101,9 @@ extension TestFavoriteTableViewController{
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
         guard let marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return cell}
-//        cell.marketTitle.text = marketPlaces[indexPath.row].facilityname
+        let marketSetup = marketPlaces[indexPath.row]
+        cell.marketTitle.text = marketSetup.facilityname
+        cell.marketTitle.font = UIFont.boldSystemFont(ofSize: 30)
         return cell
     }
 }
