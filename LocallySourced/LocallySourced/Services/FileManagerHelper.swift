@@ -156,6 +156,24 @@ class FileManagerHelper {
         }
     }
     
+    //this function lets you update the shopping list name
+    func updateShoppingList(withName name: String) {
+        if let index = savedShoppingLists.index(where: { (savedList) -> Bool in
+            return savedList.title == name
+        }) {
+            savedShoppingLists[index].title = name
+        }
+    }
+    
+    //this function lets you update the favorites
+    func updateFarmersMarket(_ market: FarmersMarket, withNewNotes notes: String) {
+        if let index = savedFarmersMarkets.index(where: { (savedMarket) -> Bool in
+            return savedMarket.facilityname == market.facilityname && savedMarket.facilitycity?.rawValue == market.facilitycity?.rawValue && savedMarket.facilityzipcode == market.facilityzipcode
+        }) {
+            savedFarmersMarkets[index].notes = notes
+        }
+    }
+    
     //this function will retrieve the farmersMarket
     func retrieveSavedFarmersMarket() -> [FarmersMarket] {
         return savedFarmersMarkets
