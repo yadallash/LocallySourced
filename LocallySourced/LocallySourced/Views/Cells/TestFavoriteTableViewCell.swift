@@ -15,18 +15,27 @@ class TestFavoriteTableViewCell: FoldingCell {
     var indexPath: IndexPath?
     var farmersMarket: FarmersMarket?
     weak var delegate: FavoriteTableViewCellDelegate?
+    
+    
+    @IBOutlet weak var containerMask: UIView!
+    
+    @IBOutlet weak var foregroundMask: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var boroughTitle: UILabel!
     @IBOutlet weak var marketAdInfo: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var marketTitle: UILabel!
+    @IBOutlet weak var marketImageForegroundContainer: UIImageView!
+    
     @IBOutlet weak var noteTextView: UITextView!
     
     override func awakeFromNib() {
         foregroundView.layer.cornerRadius = 10
+        noteTextView.layer.cornerRadius = 10
         foregroundView.layer.masksToBounds = true
         super.awakeFromNib()
     }
+    
     
     override func animationDuration(_ itemIndex: NSInteger, type _: FoldingCell.AnimationType) -> TimeInterval {
         let durations = [0.26, 0.2, 0.2]

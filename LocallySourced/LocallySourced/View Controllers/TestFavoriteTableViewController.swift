@@ -124,6 +124,9 @@ extension TestFavoriteTableViewController{
         cell.setupCell(from: marketSetup)
         cell.delegate = self
         cell.indexPath = indexPath
+        cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket4")
+        cell.foregroundMask.layer.opacity = 0.25
+        cell.containerMask.layer.opacity = 0.35
         cell.farmersMarket = marketSetup
         return cell
     }
