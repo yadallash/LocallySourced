@@ -118,7 +118,6 @@ extension TestFavoriteTableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let oldNumberOfSections = sectionKey.count
             guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
             let removedMarket = marketPlaces.remove(at: indexPath.row)
             cellHeights[indexPath.section].remove(at: indexPath.row)
@@ -127,7 +126,7 @@ extension TestFavoriteTableViewController{
             }) {
                 favoriteFarmersMarkets.remove(at: index)
             }
-            if sectionKey.count < oldNumberOfSections {
+            if marketPlaces.isEmpty {
                 //always delete sections first
                 cellHeights.remove(at: indexPath.section)
                 tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
@@ -173,6 +172,10 @@ extension TestFavoriteTableViewController: FavoriteTableViewCellDelegate{
         if let notes = cell.noteTextView.text {
             market.notes = notes
             FileManagerHelper.manager.updateFarmersMarket(market, withNewNotes: notes)
+            let alert = UIAlertController(title: "Success", message: "Note has been saved for \(market.facilityname)!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
