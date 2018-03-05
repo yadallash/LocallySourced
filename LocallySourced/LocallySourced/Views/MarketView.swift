@@ -29,7 +29,8 @@ class MarketView: UIView {
     lazy var marketTableView: UITableView = {
         let tv = UITableView()
         tv.register(MarketCell.self, forCellReuseIdentifier: "MarketCell")
-        tv.backgroundColor = .clear
+        tv.register(MarketCustomTableViewCell.self, forCellReuseIdentifier: "customMarketTableViewCell")
+        tv.separatorColor = .clear
         return tv
     }()
     

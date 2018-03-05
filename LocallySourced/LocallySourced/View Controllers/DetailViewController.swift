@@ -114,13 +114,18 @@ class DetailViewController: UIViewController {
         let alreadySaved = FileManagerHelper.manager.alreadySavedShoppingList(shoppingList)
         var alertController: UIAlertController!
         //if the shopping list already exists - error alert
+        var alertAction: UIAlertAction!
         if alreadySaved {
             alertController = UIAlertController(title: "Error", message: "You've already added a shopping list for this market.", preferredStyle: .alert)
+            alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         } else { //if not - success alert
             alertController = UIAlertController(title: "Success", message: "A shopping list has been added for \(market.facilityname).", preferredStyle: .alert)
             FileManagerHelper.manager.addNewShoppingList(shoppingList)
+            alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
+                //dependency injection
+//                let detailShoppingListVC = DetailShoppingListViewController
+            })
         }
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController?.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
     }

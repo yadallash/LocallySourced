@@ -58,10 +58,11 @@ class FavoritesViewController: UIViewController {
         }
     }
     func configNavBar(){
-        let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
-        //            self.navigationItem.titleView = imageView
-        navigationItem.rightBarButtonItems = [listNavBarButtonItem]
-        navigationItem.title = "Title"
+//        let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
+//        //            self.navigationItem.titleView = imageView
+//        navigationItem.rightBarButtonItems = [listNavBarButtonItem]
+//        navigationItem.title = "Title"
+        self.navigationController?.isNavigationBarHidden = true
     }
     @objc func addListTest(_ sender: UIBarButtonItem){
         var markets = [FarmersMarket](){
