@@ -11,7 +11,9 @@ import SnapKit
 
 class MarketViewController: UIViewController {
     
-    let marketView = MarketView()
+    private let cellSpacing: CGFloat = 10
+    
+    private let marketView = MarketView()
     
     // Animations
     private let launchScreenView = LaunchScreenView()
@@ -21,7 +23,7 @@ class MarketViewController: UIViewController {
             animateMarketTV()
         }
     }
-    var filteredMarkets: [FarmersMarket] {
+    private var filteredMarkets: [FarmersMarket] {
         guard filteredByCity != "All" else {return markets}
         if let city = filteredByCity {
             return markets.filter{
@@ -37,8 +39,8 @@ class MarketViewController: UIViewController {
     }
     var filteredByCity: String?
     
-    var cities = ["All", Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue]
-    var cityImages = [#imageLiteral(resourceName: "Above_Gotham"), #imageLiteral(resourceName: "bronximg"), #imageLiteral(resourceName: "brooklynimg"), #imageLiteral(resourceName: "manhattanimg"), #imageLiteral(resourceName: "queensimg"), #imageLiteral(resourceName: "statenimg")]
+    private var cities = ["All", Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue]
+    private var cityImages = [#imageLiteral(resourceName: "Above_Gotham"), #imageLiteral(resourceName: "bronximg"), #imageLiteral(resourceName: "brooklynimg"), #imageLiteral(resourceName: "manhattanimg"), #imageLiteral(resourceName: "queensimg"), #imageLiteral(resourceName: "statenimg")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,7 @@ class MarketViewController: UIViewController {
         })
     }
     
-    func configNavBar(){
+    private func configNavBar(){
         navigationItem.title = "Access Green"
     }
     
