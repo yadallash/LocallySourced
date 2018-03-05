@@ -45,6 +45,10 @@ class MarketViewController: UIViewController {
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
         constrainView()
         loadMarkets()
+        configNavBar()
+    }
+    func configNavBar(){
+        navigationItem.title = "Access Green"
     }
     private func constrainView() {
         view.addSubview(marketView)
@@ -76,7 +80,7 @@ class MarketViewController: UIViewController {
 }
 extension MarketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let market = markets[indexPath.row]
+        let market = filteredMarkets[indexPath.row]
         let detailVC = DetailViewController(market: market)
         navigationController?.pushViewController(detailVC, animated: true)
     }
