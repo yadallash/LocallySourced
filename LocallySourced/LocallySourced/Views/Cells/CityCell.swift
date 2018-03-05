@@ -31,7 +31,7 @@ class CityCell: UICollectionViewCell {
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     
