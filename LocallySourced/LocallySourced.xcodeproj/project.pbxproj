@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4527098C09139AF54F4C9AC6 /* Pods_LocallySourced.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */; };
+		814BB115204CD02100EB08CE /* MarketCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */; };
 		81800F51204B393E00FE189C /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81800F50204B393E00FE189C /* MarketCell.swift */; };
 		81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F49204AF297009DC98B /* AppDelegate.swift */; };
 		81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941F52204AF297009DC98B /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 		81E386CD204B2189003905D0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CC204B2189003905D0 /* DetailView.swift */; };
 		81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CE204B46BE003905D0 /* UIColor+Extension.swift */; };
 		81E386D1204B50C6003905D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E386D0204B50C6003905D0 /* Assets.xcassets */; };
+		81F8A9F7204CB62300A64279 /* ShoppingListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */; };
 		B3827E67095BFAE95A3915C9 /* Pods_LocallySourcedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */; };
 		F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */; };
 		F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */; };
@@ -65,6 +67,7 @@
 		11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourced.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638C05F4668F892D098C8591 /* Pods-LocallySourcedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedUITests/Pods-LocallySourcedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6FA17A7015C8A84A666CFBC3 /* Pods-LocallySourcedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.release.xcconfig"; sourceTree = "<group>"; };
+		814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCustomTableViewCell.swift; sourceTree = "<group>"; };
 		81800F50204B393E00FE189C /* MarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
 		81941F46204AF297009DC98B /* LocallySourced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallySourced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81941F49204AF297009DC98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		81E386CC204B2189003905D0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		81E386CE204B46BE003905D0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		81E386D0204B50C6003905D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsTableViewCell.swift; sourceTree = "<group>"; };
 		8DCDA61234C643B0A38D507B /* Pods-LocallySourcedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedUITests/Pods-LocallySourcedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		924E9112CA07F3F6D93727ED /* Pods-LocallySourced.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.debug.xcconfig"; sourceTree = "<group>"; };
 		C3C6AD24EFA119CAFF7496B2 /* Pods-LocallySourced.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 				81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */,
 				81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */,
 				819D6B19204C87070011E99D /* CityCell.swift */,
+				81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */,
+				814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
 				81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */,
+				814BB115204CD02100EB08CE /* MarketCustomTableViewCell.swift in Sources */,
 				81941F9B204B2880009DC98B /* List.swift in Sources */,
 				81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */,
 				81941F7E204B00BC009DC98B /* NetworkHelper.swift in Sources */,
@@ -620,6 +627,7 @@
 				81941FA6204B70A3009DC98B /* TestFavoriteTableViewCell.swift in Sources */,
 				81941FA1204B5608009DC98B /* FavoriteTableViewCell.swift in Sources */,
 				819D6B18204C84E00011E99D /* MarketView.swift in Sources */,
+				81F8A9F7204CB62300A64279 /* ShoppingListsTableViewCell.swift in Sources */,
 				819D6B1A204C87070011E99D /* CityCell.swift in Sources */,
 				F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */,
 			);
