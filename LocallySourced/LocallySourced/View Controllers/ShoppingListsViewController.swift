@@ -9,7 +9,7 @@
 import UIKit
 
 class ShoppingListsViewController: UIViewController {
- 
+    
     let listView = ShoppingListsView()
     var shoppingList = [List]() {
         didSet {
@@ -18,13 +18,14 @@ class ShoppingListsViewController: UIViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addList))
         listView.listTableView.delegate = self
         listView.listTableView.dataSource = self
+        listView.listTableView.estimatedRowHeight = 180
         constrainView()
     }
     
@@ -32,7 +33,7 @@ class ShoppingListsViewController: UIViewController {
         super.viewWillAppear(true)
         shoppingList = FileManagerHelper.manager.retrieveSavedShoppingLists()
     }
-
+    
     private func constrainView() {
         view.addSubview(listView)
         listView.snp.makeConstraints { (view) in
@@ -41,21 +42,21 @@ class ShoppingListsViewController: UIViewController {
     }
     
     @objc private func addList() {
-            let alert = UIAlertController(title: "Create a List", message: nil, preferredStyle: .alert)
-            alert.addTextField { (textField) in
-                textField.placeholder = "Enter a Name for the List"
-            }
-            alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak alert](_) in
-                let textField = alert?.textFields![0].text
-                let list = List(title: textField!, items: [])
-                guard FileManagerHelper.manager.alreadySavedShoppingList(list) == false else {self.errorAlert(); return}
-                FileManagerHelper.manager.addNewShoppingList(list)
-                self.shoppingList.append(list)
-                self.listView.listTableView.reloadData()
-            })
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(cancel)
-            present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Create a List", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter a Name for the List"
+        }
+        alert.addAction(UIAlertAction(title: "Done", style: .default) { [weak alert](_) in
+            let textField = alert?.textFields![0].text
+            let list = List(title: textField!, items: [])
+            guard FileManagerHelper.manager.alreadySavedShoppingList(list) == false else {self.errorAlert(); return}
+            FileManagerHelper.manager.addNewShoppingList(list)
+            self.shoppingList.append(list)
+            self.listView.listTableView.reloadData()
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     func errorAlert() {
         let alertController = UIAlertController(title: "Error", message: "List already exists", preferredStyle: .alert)
@@ -70,20 +71,29 @@ extension ShoppingListsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         let list = shoppingList[indexPath.row]
-        cell.textLabel?.text = list.title
-        return cell
+        guard let customCell = tableView.dequeueReusableCell(withIdentifier: "customShoppingListsCell", for: indexPath) as? ShoppingListsTableViewCell else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
+            cell.textLabel?.text = list.title
+            return cell
+        }
+        customCell.listLabel.text = list.title
+        if indexPath.row%2 == 1{
+            customCell.containerView.image = #imageLiteral(resourceName: "farmersMarket5")
+        }else{
+            customCell.containerView.image = #imageLiteral(resourceName: "leaf-nature-green-spring-158780")
+        }
+        return customCell
     }
     
 }
 extension ShoppingListsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, handler) in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             
-                handler(true)
-            }
+            handler(true)
+        }
         deleteAction.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         configuration.performsFirstActionWithFullSwipe = true //HERE..
@@ -97,6 +107,9 @@ extension ShoppingListsViewController: UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: [editAction])
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
 }
 
