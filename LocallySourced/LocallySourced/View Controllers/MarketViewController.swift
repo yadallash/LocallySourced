@@ -37,7 +37,7 @@ class MarketViewController: UIViewController {
             return markets
         }
     }
-    var filteredByCity: String?
+    private var filteredByCity: String?
     
     private var cities = ["All", Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue]
     private var cityImages = [#imageLiteral(resourceName: "Above_Gotham"), #imageLiteral(resourceName: "bronximg"), #imageLiteral(resourceName: "brooklynimg"), #imageLiteral(resourceName: "manhattanimg"), #imageLiteral(resourceName: "queensimg"), #imageLiteral(resourceName: "statenimg")]
@@ -52,6 +52,9 @@ class MarketViewController: UIViewController {
         loadMarkets()
         configNavBar()
         view.addSubview(launchScreenView)
+        launchScreenView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
         launchScreenView.delegate = self
         navigationController?.navigationBar.alpha = 0.0
         tabBarController?.tabBar.alpha = 0.0
@@ -149,6 +152,22 @@ extension MarketViewController: UICollectionViewDataSource {
         cell.testingImageView.image = cityImage
         cell.testingLabel.text = city.uppercased()
         return cell
+    }
+}
+extension MarketViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = collectionView.frame.height
+        let width: CGFloat = collectionView.frame.width
+        return CGSize(width: width * 0.30, height: height - (2 * cellSpacing))
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(cellSpacing - 5 , cellSpacing + 5, cellSpacing - 5, cellSpacing + 5)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return cellSpacing
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return cellSpacing
     }
 }
 extension MarketViewController: UICollectionViewDelegate {
