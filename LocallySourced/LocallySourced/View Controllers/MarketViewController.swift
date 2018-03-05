@@ -53,7 +53,7 @@ class MarketViewController: UIViewController {
         configNavBar()
         view.addSubview(launchScreenView)
         launchScreenView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+            make.edges.equalTo(self.view)
         }
         launchScreenView.delegate = self
         navigationController?.navigationBar.alpha = 0.0
