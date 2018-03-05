@@ -46,6 +46,7 @@ class MarketViewController: UIViewController {
         constrainView()
         loadMarkets()
     }
+    
     private func constrainView() {
         view.addSubview(marketView)
         marketView.snp.makeConstraints { (view) in
