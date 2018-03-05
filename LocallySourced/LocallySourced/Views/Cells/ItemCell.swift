@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-extension Float {
+extension Double {
     var cleanValue: String {
         return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
@@ -38,7 +38,7 @@ class ItemCell: UITableViewCell {
     lazy var stepperValueLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return label
     }()
@@ -91,7 +91,7 @@ class ItemCell: UITableViewCell {
     }
     
     @objc func stepperButtonPressed() {
-        stepperValueLabel.text = stepperButton.value.description
+        stepperValueLabel.text = stepperButton.value.cleanValue
         currentItem.amount = stepperButton.value
         delegate?.stepperButtonPressed(item: currentItem)
     }
@@ -109,7 +109,7 @@ class ItemCell: UITableViewCell {
     func setupItemLabel() {
         itemLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(snp.centerY)
-            make.leading.equalTo(checkMarkImageView.snp.trailing).offset(10)
+            make.leading.equalTo(checkMarkImageView.snp.trailing).offset(14)
             make.width.equalTo(snp.width).multipliedBy(0.5)
         }
     }
@@ -117,7 +117,8 @@ class ItemCell: UITableViewCell {
     func setupStepperValueLabel() {
         stepperValueLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(snp.centerY)
-            make.trailing.equalTo(stepperButton.snp.leading).offset(-10)
+            make.trailing.equalTo(stepperButton.snp.leading).offset(-14)
+            make.width.equalTo(self.bounds.width / 9.5)
             make.height.equalTo(itemLabel.snp.height)
         }
     }
@@ -134,7 +135,7 @@ class ItemCell: UITableViewCell {
         self.currentItem = groceryItem
         self.itemLabel.text = groceryItem.name
         self.stepperButton.value = groceryItem.amount
-        self.stepperValueLabel.text = String(groceryItem.amount)
+        self.stepperValueLabel.text = String(groceryItem.amount.cleanValue)
     }
     
 }
