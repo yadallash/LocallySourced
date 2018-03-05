@@ -11,9 +11,9 @@ import UIKit
 class DetailShoppingListViewController: UIViewController {
     
     // MARK: - Properties
-    var detailShoppingListView = DetailShoppingListView()
-    let resusableCell = "ItemCell"
-    var shoppingList: List! {
+    private var detailShoppingListView = DetailShoppingListView()
+    private let resusableCell = "ItemCell"
+    private var shoppingList: List! {
         didSet {
             DispatchQueue.main.async {
                 self.detailShoppingListView.shoppingListTableView.reloadData()
@@ -42,38 +42,37 @@ class DetailShoppingListViewController: UIViewController {
         self.view.backgroundColor = .red
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //need function to get specific list
-        
-        //reload
+    // MARK: - Functions
+    private func toggleCellCheckbox(_ cell: ItemCell, isCompleted: Bool) {
+        if !isCompleted {
+            cell.itemLabel.textColor = UIColor.black
+            cell.stepperValueLabel.textColor = UIColor.black
+            cell.stepperButton.tintColor = UIColor.black
+            cell.stepperButton.isEnabled = true
+            cell.checkMarkImageView.image = #imageLiteral(resourceName: "unchecked")
+        } else {
+            cell.itemLabel.textColor = UIColor.gray
+            cell.stepperValueLabel.textColor = UIColor.gray
+            cell.stepperButton.tintColor = UIColor.gray
+            cell.stepperButton.isEnabled = false
+            cell.checkMarkImageView.image = #imageLiteral(resourceName: "checked")
+        }
     }
     
-    // MARK: - Functions
-    //    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-    //        if !isCompleted {
-    //            cell.accessoryType = .none
-    //            cell.textLabel?.textColor = UIColor.black
-    //            cell.detailTextLabel?.textColor = UIColor.black
-    //        } else {
-    //            cell.accessoryType = .checkmark
-    //            cell.textLabel?.textColor = UIColor.gray
-    //            cell.detailTextLabel?.textColor = UIColor.gray
-    //        }
-    //    }
-    
     private func configureNavBar() {
+        navigationItem.title = shoppingList.title
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addItem))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.black
     }
     
     // adds items to shoppingList, via alertController
-    @objc func addItem() {
+    @objc private func addItem() {
         let alert = UIAlertController(title: "Grocery Item", message: "Add an Item", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
             let textField = alert.textFields![0]
             let item = Item(name: textField.text!, amount: 0, completed: false)
-            FileManagerHelper.manager.addItem(item, toShoppingList: self!.shoppingList)
+            let _ = FileManagerHelper.manager.addItem(item, toShoppingList: self!.shoppingList)
             self?.detailShoppingListView.shoppingListTableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
@@ -96,16 +95,16 @@ extension DetailShoppingListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: resusableCell, for: indexPath) as! ItemCell
         let item = shoppingList.items[indexPath.row]
         cell.configureCell(with: item)
-        //        toggleCellCheckbox(cell, isCompleted: item.completed)
+        cell.delegate = self
+        toggleCellCheckbox(cell, isCompleted: item.completed)
         return cell
     }
     
     // defines tableView editing style. Set to .delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            shoppingList.items.remove(at: indexPath.row)
             FileManagerHelper.manager.removeItem(shoppingList.items[indexPath.row], fromShoppingList: self.shoppingList)
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
@@ -114,31 +113,18 @@ extension DetailShoppingListViewController: UITableViewDataSource {
 extension DetailShoppingListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        var groceryItem = shoppingList.items[indexPath.row]
+        guard let cell = tableView.cellForRow(at: indexPath) as? ItemCell else { return }
+        let groceryItem = shoppingList.items[indexPath.row]
         groceryItem.completed = !groceryItem.completed
         FileManagerHelper.manager.updateItem(groceryItem, forShoppingList: self.shoppingList)
-        //        let toggledCompletion = !groceryItem.completed
-        //        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        //        groceryItem.completed = toggledCompletion
+        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
         tableView.reloadData()
     }
     
-    // allows tableview row editing
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
 }
 
 extension DetailShoppingListViewController: ItemCellDelegate {
-    func stepperButtonPressed() {
-
+    func stepperButtonPressed(item: Item) {
+        FileManagerHelper.manager.updateItem(item, forShoppingList: shoppingList)
     }
-    
-    func checkedButtonPressed() {
-        
-    }
-    
-    
 }
-
