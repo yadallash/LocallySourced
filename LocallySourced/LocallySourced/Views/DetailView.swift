@@ -14,13 +14,12 @@ class DetailView: UIView {
     
     lazy var marketNameLabel: UILabel =  {
         let label = UILabel()
-        
         label.setContentHuggingPriority(UILayoutPriority(252), for: .vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         //to do - set up font, color, etc.
-        label.text = "test!!"
         return label
     }()
 
@@ -42,21 +41,12 @@ class DetailView: UIView {
         label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .vertical)
         label.numberOfLines = 0
         //to do - set up font, color, etc.
-        label.text = "test!!"
         return label
     }()
     
     lazy var directionsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Directions", for: .normal)
-        //to do - set up font, color, look
-        button.setTitleColor(UIColor.buttonBlue, for: .normal)
-        return button
-    }()
-    
-    lazy var yelpButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Farmers Markets in ", for: .normal)
         //to do - set up font, color, look
         button.setTitleColor(UIColor.buttonBlue, for: .normal)
         return button
@@ -82,7 +72,6 @@ class DetailView: UIView {
         setUpMapView()
         setUpAddressLabel()
         setUpDirectionsButton()
-        setUpYelpButton()
     }
     
     private func setUpMarketNameLabel() {
@@ -103,6 +92,11 @@ class DetailView: UIView {
             make.centerX.equalTo(self)
             make.height.lessThanOrEqualTo(self).multipliedBy(0.5)
         }
+        
+        mapView.layer.masksToBounds = true
+        mapView.layer.borderWidth = 1.0
+        mapView.layer.borderColor = UIColor.lightGray.cgColor
+        mapView.layer.cornerRadius = 10
     }
     
     private func setUpAddressLabel() {
@@ -123,6 +117,7 @@ class DetailView: UIView {
             make.height.equalTo(self).multipliedBy(0.10)
             make.top.equalTo(addressLabel.snp.bottom).offset(20)
             make.centerX.equalTo(self)
+            make.bottom.equalTo(self).offset(-20)
         }
         
         directionsButton.layer.masksToBounds = true
@@ -130,21 +125,4 @@ class DetailView: UIView {
         directionsButton.layer.borderWidth = 1.0
         directionsButton.layer.borderColor = UIColor.buttonBlue.cgColor
     }
-    
-    private func setUpYelpButton() {
-        addSubview(yelpButton)
-        
-        yelpButton.snp.makeConstraints { (make) in
-            make.width.height.equalTo(directionsButton)
-            make.top.equalTo(directionsButton.snp.bottom).offset(10)
-            make.centerX.equalTo(self)
-            make.bottom.equalTo(self).offset(-20)
-        }
-        
-        yelpButton.layer.masksToBounds = true
-        yelpButton.layer.cornerRadius = 10
-        yelpButton.layer.borderWidth = 1.0
-        yelpButton.layer.borderColor = UIColor.buttonBlue.cgColor
-    }
-    
 }
