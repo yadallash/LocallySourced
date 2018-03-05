@@ -9,7 +9,7 @@
 import UIKit
 import FoldingCell
 class TestFavoriteTableViewController: UITableViewController {
-    let kCloseCellHeight: CGFloat = 179
+    var kCloseCellHeight: CGFloat = 179
     let kOpenCellHeight: CGFloat = 488
     var kRowsCount = 10
     var cellHeights: [[CGFloat]] = [[]]
@@ -66,6 +66,7 @@ class TestFavoriteTableViewController: UITableViewController {
         
     }
     private func setupCells() {
+        kCloseCellHeight = self.view.bounds.height*0.25
         cellHeights = Array(repeating: [kCloseCellHeight], count: sectionKey.count)
         for i in 0..<sectionKey.count{
             let arrayOfMarkets = marketsByBouroghs[sectionKey[i]]
@@ -75,20 +76,10 @@ class TestFavoriteTableViewController: UITableViewController {
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         animateMarketTV()
+        tableView.separatorColor = .clear
     }
     func configNavBar(){
-        let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
-        //            self.navigationItem.titleView = imageView
-        navigationItem.rightBarButtonItems = [listNavBarButtonItem]
-        navigationItem.title = "Title"
-    }
-    @objc func addListTest(_ sender: UIBarButtonItem){
-        var markets = [FarmersMarket](){
-            didSet{
-                FileManagerHelper.manager.addNewFarmersMarket(markets[10])
-            }
-        }
-        FarmersMarketAPIClient.manager.getMarkets(completion: {markets = $0}, errorHandler: {print($0)})
+        navigationItem.title = "Access Green"
     }
     
 
@@ -123,7 +114,16 @@ extension TestFavoriteTableViewController{
         let marketSetup = marketPlaces[indexPath.row]
         cell.setupCell(from: marketSetup)
         cell.delegate = self
+        cell.foregroundMask.layer.opacity = 0.25
+        cell.containerMask.layer.opacity = 0.35
         cell.indexPath = indexPath
+        if indexPath.row % 2 == 0{
+            cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket4")
+            cell.containerMarketImage.image = #imageLiteral(resourceName: "farmersMarket4")
+        }else{
+            cell.marketImageForegroundContainer.image = #imageLiteral(resourceName: "farmersMarket3")
+            cell.containerMarketImage.image = #imageLiteral(resourceName: "farmersMarket3")
+        }
         cell.farmersMarket = marketSetup
         return cell
     }
@@ -167,6 +167,7 @@ extension TestFavoriteTableViewController: FavoriteTableViewCellDelegate{
         return cellHeights[indexPath.section][indexPath.row]
     }
    private func animatingFoldingCell(for cell: TestFavoriteTableViewCell, indexPath: IndexPath){
+          cell.noteTextView.resignFirstResponder()
         if cell.isAnimating() {
             return
         }

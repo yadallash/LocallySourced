@@ -22,19 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //instance of the homeViewController
         let marketsViewiewController = MarketViewController()
         let navigationHomeController = UINavigationController(rootViewController: marketsViewiewController)
-        navigationHomeController.tabBarItem = UITabBarItem(title: "Markets", image: nil, selectedImage: nil)
+        navigationHomeController.tabBarItem = UITabBarItem(title: "Markets", image: #imageLiteral(resourceName: "marketsLogo"), selectedImage: nil)
         //instance of favoriteViewController
         let favoriteViewController = FavoritesViewController()
         let navigationFavoriteViewController = UINavigationController(rootViewController: favoriteViewController)
-        navigationFavoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: nil, selectedImage: nil)
+        navigationFavoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: #imageLiteral(resourceName: "favorites"), selectedImage: nil)
         //instance of shoppingListsViewController
         let shoppingListsViewController = ShoppingListsViewController()
         let shoppingListsNavigationController = UINavigationController(rootViewController: shoppingListsViewController)
-        shoppingListsNavigationController.tabBarItem = UITabBarItem(title: "Shopping Lists", image: nil, selectedImage: nil)
+        shoppingListsNavigationController.tabBarItem = UITabBarItem(title: "Shopping Lists", image: #imageLiteral(resourceName: "shoppingIcon"), selectedImage: nil)
         //instance of testFavorites
         let testFavoriteTableViewController = TestFavoriteTableViewController.storyBoardInstance()
         let testNavigationController = UINavigationController(rootViewController: testFavoriteTableViewController)
-        testNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: nil, selectedImage: nil)
+        testNavigationController.tabBarItem = UITabBarItem(title: "Favorites", image: #imageLiteral(resourceName: "favouriteLogo"), selectedImage: nil)
         tabViewController.viewControllers = [navigationHomeController, testNavigationController, shoppingListsNavigationController]
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabViewController

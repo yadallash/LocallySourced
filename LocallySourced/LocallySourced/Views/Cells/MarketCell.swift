@@ -24,15 +24,22 @@ class MarketCell: UITableViewCell {
         let label = UILabel()
         return label
     }()
+    lazy var containerView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .cyan
+        return imageView
+    }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.layer.cornerRadius = 15
         setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
 
     func setUpView() {
         addSubview(marketName)
@@ -47,6 +54,15 @@ class MarketCell: UITableViewCell {
             make.bottom.equalTo(self).offset(-5)
         }
         
+    }
+    func setupContainerView() {
+        addSubview(containerView)
+        containerView.snp.makeConstraints { (constraint) in
+            constraint.centerX.equalTo(snp.centerX)
+            constraint.centerY.equalTo(snp.centerY)
+            constraint.width.equalTo(snp.width).multipliedBy(0.95)
+            constraint.height.equalTo(snp.height).multipliedBy(0.95)
+        }
     }
 
 }
