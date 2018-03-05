@@ -16,14 +16,15 @@ extension Float {
 }
 
 protocol ItemCellDelegate: class {
-    func stepperButtonPressed()
-    func checkedButtonPressed()
+    func stepperButtonPressed(item: Item)
 }
 
 class ItemCell: UITableViewCell {
     
     // MARK: - Delegate
     weak var delegate: ItemCellDelegate?
+    
+    private var currentItem: Item!
     
     // MARK: - Outlets
     lazy var itemLabel: UILabel = {
@@ -56,12 +57,11 @@ class ItemCell: UITableViewCell {
         return stepper
     }()
     
-    lazy var checkMarkButton: UIButton = {
-        let button = UIButton(type: UIButtonType.custom) as UIButton
-        button.setImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
-        button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(checkedButtonPressed), for: .touchUpInside)
-        return button
+    lazy var checkMarkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "unchecked")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     // MARK: - Initializers
@@ -80,35 +80,25 @@ class ItemCell: UITableViewCell {
         addSubview(itemLabel)
         addSubview(stepperButton)
         addSubview(stepperValueLabel)
-        addSubview(checkMarkButton)
+        addSubview(checkMarkImageView)
     }
     
     func setUpView() {
         setupItemLabel()
         setupStepperButton()
         setupStepperValueLabel()
-        setupCheckMarkButton()
-    }
-    
-    func isItemComplete(_ currentState: Item) {
-        guard currentState.completed == false else {
-            return self.checkMarkButton.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
-        }
-        return self.checkMarkButton.setImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
+        setupCheckMarkImageView()
     }
     
     @objc func stepperButtonPressed() {
         stepperValueLabel.text = stepperButton.value.description
-        delegate?.stepperButtonPressed()
-    }
-    
-    @objc private func checkedButtonPressed() {
-        delegate?.checkedButtonPressed()
+        currentItem.amount = stepperButton.value
+        delegate?.stepperButtonPressed(item: currentItem)
     }
     
     // refer to cell height for image size, not width (eg self)
-    func setupCheckMarkButton() {
-        checkMarkButton.snp.makeConstraints { (make) in
+    func setupCheckMarkImageView() {
+        checkMarkImageView.snp.makeConstraints { (make) in
             make.width.equalTo(self.bounds.height/2)
             make.height.equalTo(self.bounds.height/2)
             make.centerY.equalTo(self)
@@ -119,7 +109,7 @@ class ItemCell: UITableViewCell {
     func setupItemLabel() {
         itemLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(snp.centerY)
-            make.leading.equalTo(checkMarkButton.snp.trailing).offset(10)
+            make.leading.equalTo(checkMarkImageView.snp.trailing).offset(10)
             make.width.equalTo(snp.width).multipliedBy(0.5)
         }
     }
@@ -141,10 +131,10 @@ class ItemCell: UITableViewCell {
     
     
     func configureCell(with groceryItem: Item) {
+        self.currentItem = groceryItem
         self.itemLabel.text = groceryItem.name
         self.stepperButton.value = groceryItem.amount
         self.stepperValueLabel.text = String(groceryItem.amount)
-        self.isItemComplete(groceryItem)
     }
     
 }
