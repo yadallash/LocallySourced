@@ -39,7 +39,7 @@ class MarketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .white
         navigationController?.title = "Access Green"
         marketView.marketTableView.dataSource = self; marketView.marketTableView.delegate = self
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
@@ -80,6 +80,9 @@ extension MarketViewController: UITableViewDelegate {
         let detailVC = DetailViewController(market: market)
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return view.frame.height*0.15
+    }
 }
 extension MarketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,11 +90,31 @@ extension MarketViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCell", for: indexPath) as! MarketCell
         let market = filteredMarkets[indexPath.row]
+        guard let customCell = tableView.dequeueReusableCell(withIdentifier: "customMarketTableViewCell", for: indexPath) as? MarketCustomTableViewCell else{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCell", for: indexPath) as! MarketCell
         cell.marketName.text = market.facilityname
         cell.marketCity.text = market.facilitycity?.rawValue
         return cell
+        }
+        customCell.marketLabel.text = market.facilityname
+        customCell.boroughLabel.text = market.facilitycity?.rawValue
+        guard let city = market.facilitycity else{
+            return customCell
+        }
+//        switch  city{
+//        case .bronx:
+//            customCell.containerView.image = UIImage(named: "bronximg")
+//        case .brooklyn:
+//            customCell.containerView.image = UIImage(named: "brooklynimg")
+//        case .manhattan:
+//            customCell.containerView.image = UIImage(named: "manhattanimg")
+//        case .queens:
+//            customCell.containerView.image = UIImage(named: "queensimg")
+//        case .statenIsland:
+//            customCell.containerView.image = UIImage(named: "statenimg")
+//        }
+        return customCell
     }
 }
 extension MarketViewController: UICollectionViewDataSource {

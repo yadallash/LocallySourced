@@ -12,13 +12,15 @@ class CityCell: UICollectionViewCell {
     
     lazy var testingImageView: UIImageView = {
         let image = UIImageView()
-        image.layer.cornerRadius = 2
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         return image
     }()
     
     lazy var testingOverView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
+        view.layer.cornerRadius = 10
         view.layer.opacity = 0.30
         return view
     }()
@@ -35,6 +37,7 @@ class CityCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        self.layer.cornerRadius = 15
         commonInit()
     }
     required init?(coder aDecoder: NSCoder) {

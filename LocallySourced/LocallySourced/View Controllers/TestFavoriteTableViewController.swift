@@ -75,20 +75,10 @@ class TestFavoriteTableViewController: UITableViewController {
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         animateMarketTV()
+        tableView.separatorColor = .clear
     }
     func configNavBar(){
-        let listNavBarButtonItem = UIBarButtonItem(title: "testButton", style: .done, target: self, action: #selector(addListTest(_:)))
-        //            self.navigationItem.titleView = imageView
-        navigationItem.rightBarButtonItems = [listNavBarButtonItem]
-        navigationItem.title = "Title"
-    }
-    @objc func addListTest(_ sender: UIBarButtonItem){
-        var markets = [FarmersMarket](){
-            didSet{
-                FileManagerHelper.manager.addNewFarmersMarket(markets[10])
-            }
-        }
-        FarmersMarketAPIClient.manager.getMarkets(completion: {markets = $0}, errorHandler: {print($0)})
+        navigationItem.title = "Access Green"
     }
     
 
