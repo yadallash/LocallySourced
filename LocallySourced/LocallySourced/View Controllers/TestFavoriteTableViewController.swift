@@ -9,7 +9,7 @@
 import UIKit
 import FoldingCell
 class TestFavoriteTableViewController: UITableViewController {
-    let kCloseCellHeight: CGFloat = 179
+    var kCloseCellHeight: CGFloat = 179
     let kOpenCellHeight: CGFloat = 488
     var kRowsCount = 10
     var cellHeights: [[CGFloat]] = [[]]
@@ -66,6 +66,7 @@ class TestFavoriteTableViewController: UITableViewController {
         
     }
     private func setupCells() {
+        kCloseCellHeight = self.view.bounds.height*0.25
         cellHeights = Array(repeating: [kCloseCellHeight], count: sectionKey.count)
         for i in 0..<sectionKey.count{
             let arrayOfMarkets = marketsByBouroghs[sectionKey[i]]
@@ -166,6 +167,7 @@ extension TestFavoriteTableViewController: FavoriteTableViewCellDelegate{
         return cellHeights[indexPath.section][indexPath.row]
     }
    private func animatingFoldingCell(for cell: TestFavoriteTableViewCell, indexPath: IndexPath){
+          cell.noteTextView.resignFirstResponder()
         if cell.isAnimating() {
             return
         }
