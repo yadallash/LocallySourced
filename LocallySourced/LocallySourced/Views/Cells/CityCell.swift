@@ -36,7 +36,7 @@ class CityCell: UICollectionViewCell {
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
         self.layer.cornerRadius = 15
         commonInit()
     }
