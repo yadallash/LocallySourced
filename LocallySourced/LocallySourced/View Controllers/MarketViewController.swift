@@ -80,7 +80,7 @@ class MarketViewController: UIViewController {
 }
 extension MarketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let market = markets[indexPath.row]
+        let market = filteredMarkets[indexPath.row]
         let detailVC = DetailViewController(market: market)
         navigationController?.pushViewController(detailVC, animated: true)
     }
