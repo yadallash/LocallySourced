@@ -36,6 +36,11 @@ class DetailViewController: UIViewController {
         setUpNavigation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpNavigation()
+    }
+    
     private func setUpViews() {
         detailView.mapView.isHidden = true
         self.view.addSubview(detailView)
@@ -107,29 +112,24 @@ class DetailViewController: UIViewController {
         print("add shopping list!!")
         let shoppingList = List(title: market.facilityname, items: [])
         let alreadySaved = FileManagerHelper.manager.alreadySavedShoppingList(shoppingList)
-        var alertController: UIAlertController!
-        //if the shopping list already exists - error alert
-        var alertAction: UIAlertAction!
+        //if the shopping list already exists
         if alreadySaved {
-            alertController = UIAlertController(title: "Error", message: "You've already added a shopping list for this market.", preferredStyle: .alert)
-            alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
-                let list = FileManagerHelper.manager.retrieveSavedShoppingLists().filter({ (savedList) -> Bool in
-                    return savedList.title == self.market.facilityname
-                })[0]
-                let detailShoppingListVC = DetailShoppingListViewController(list: list)
-                self.navigationController?.pushViewController(detailShoppingListVC, animated: true)
-            })
+            let list = FileManagerHelper.manager.retrieveSavedShoppingLists().filter({ (savedList) -> Bool in
+                return savedList.title == self.market.facilityname
+            })[0]
+            let detailShoppingListVC = DetailShoppingListViewController(list: list)
+            self.navigationController?.pushViewController(detailShoppingListVC, animated: true)
         } else { //if not - success alert
-            alertController = UIAlertController(title: "Success", message: "A shopping list has been added for \(market.facilityname).", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Success", message: "A shopping list has been added for \(market.facilityname).", preferredStyle: .alert)
             FileManagerHelper.manager.addNewShoppingList(shoppingList)
-            alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
                 //dependency injection
                 let detailShoppingListVC = DetailShoppingListViewController(list: shoppingList)
                 self.navigationController?.pushViewController(detailShoppingListVC, animated: true)
             })
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true, completion: nil)
         }
-        alertController?.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc private func directionsButtonTapped() {
