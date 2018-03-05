@@ -45,6 +45,10 @@ class MarketViewController: UIViewController {
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
         constrainView()
         loadMarkets()
+        configNavBar()
+    }
+    func configNavBar(){
+        navigationItem.title = "Access Green"
     }
     private func constrainView() {
         view.addSubview(marketView)
