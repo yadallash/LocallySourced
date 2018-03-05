@@ -40,7 +40,7 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        navigationController?.title = "Access Green"
+        self.navigationItem.title = "Access Green"
         marketView.marketTableView.dataSource = self; marketView.marketTableView.delegate = self
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
         constrainView()

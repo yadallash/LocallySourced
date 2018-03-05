@@ -38,8 +38,16 @@ class DetailShoppingListViewController: UIViewController {
         detailShoppingListView.shoppingListTableView.delegate = self
         detailShoppingListView.shoppingListTableView.dataSource = self
         configureNavBar()
+        setUpViews()
+        self.view.backgroundColor = .white
+    }
+    
+    private func setUpViews() {
         self.view.addSubview(detailShoppingListView)
-        self.view.backgroundColor = .red
+        
+        self.detailShoppingListView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
     
     // MARK: - Functions

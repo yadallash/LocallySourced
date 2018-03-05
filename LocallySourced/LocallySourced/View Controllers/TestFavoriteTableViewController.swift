@@ -79,7 +79,7 @@ class TestFavoriteTableViewController: UITableViewController {
         tableView.separatorColor = .clear
     }
     func configNavBar(){
-        navigationItem.title = "Access Green"
+        navigationItem.title = "Favorite Markets"
     }
     
 
