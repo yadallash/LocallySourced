@@ -22,7 +22,7 @@ class DetailShoppingListView: UIView {
     
     // MARK: - Initializers
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
         commonInit()
     }
     

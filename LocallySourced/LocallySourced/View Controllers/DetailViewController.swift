@@ -20,10 +20,6 @@ class DetailViewController: UIViewController {
         return "\(market.facilitystreetname ?? "No Street Name Available"), \(market.facilitycity?.rawValue ?? "No City Name Available"), \(market.facilitystate) \(market.facilityzipcode ?? "No Zipcode Available")".replacingOccurrences(of: "&", with: "and")
     }
     
-//    init() {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-    
     init(market: FarmersMarket) {
         self.market = market
         
@@ -73,7 +69,6 @@ class DetailViewController: UIViewController {
         })
         
         detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTapped), for: .touchUpInside)
-        detailView.yelpButton.addTarget(self, action: #selector(yelpButtonTapped), for: .touchUpInside)
     }
     
     private func setUpNavigation() {
@@ -117,13 +112,20 @@ class DetailViewController: UIViewController {
         var alertAction: UIAlertAction!
         if alreadySaved {
             alertController = UIAlertController(title: "Error", message: "You've already added a shopping list for this market.", preferredStyle: .alert)
-            alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
+                let list = FileManagerHelper.manager.retrieveSavedShoppingLists().filter({ (savedList) -> Bool in
+                    return savedList.title == self.market.facilityname
+                })[0]
+                let detailShoppingListVC = DetailShoppingListViewController(list: list)
+                self.navigationController?.pushViewController(detailShoppingListVC, animated: true)
+            })
         } else { //if not - success alert
             alertController = UIAlertController(title: "Success", message: "A shopping list has been added for \(market.facilityname).", preferredStyle: .alert)
             FileManagerHelper.manager.addNewShoppingList(shoppingList)
             alertAction = UIAlertAction(title: "OK", style: .default, handler: {(_) in
                 //dependency injection
-//                let detailShoppingListVC = DetailShoppingListViewController
+                let detailShoppingListVC = DetailShoppingListViewController(list: shoppingList)
+                self.navigationController?.pushViewController(detailShoppingListVC, animated: true)
             })
         }
         alertController?.addAction(alertAction)
@@ -136,16 +138,6 @@ class DetailViewController: UIViewController {
             print("couldn't get encoded address or url")
             return
         }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-    
-    @objc private func yelpButtonTapped() {
-        print("yelp button tapped!!")
-        guard let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let url = URL(string: "https://www.yelp.com/search?find_desc=\(market.facilityname)&find_loc=\(encodedAddress)") else {
-            print("couldn't get encoded address or url")
-            return
-        }
-        
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 

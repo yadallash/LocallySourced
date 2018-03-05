@@ -42,13 +42,13 @@ class MarketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = .white
-        navigationController?.title = "Access Green"
+        self.navigationItem.title = "Access Green"
         marketView.marketTableView.dataSource = self; marketView.marketTableView.delegate = self
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
         constrainView()
         loadMarkets()
+        configNavBar()
         view.addSubview(launchScreenView)
         launchScreenView.delegate = self
         navigationController?.navigationBar.alpha = 0.0
@@ -58,6 +58,10 @@ class MarketViewController: UIViewController {
             self.tabBarController?.tabBar.alpha = 1.0
             
         })
+    }
+    
+    func configNavBar(){
+        navigationItem.title = "Access Green"
     }
     
     private func constrainView() {
@@ -90,7 +94,7 @@ class MarketViewController: UIViewController {
 }
 extension MarketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let market = markets[indexPath.row]
+        let market = filteredMarkets[indexPath.row]
         let detailVC = DetailViewController(market: market)
         navigationController?.pushViewController(detailVC, animated: true)
     }
