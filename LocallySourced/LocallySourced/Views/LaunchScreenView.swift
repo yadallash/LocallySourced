@@ -20,7 +20,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     //MARK: - Outlets
     lazy var imageViewOne: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "apple")
+        imageView.image = #imageLiteral(resourceName: "apple").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -28,7 +29,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewTwo: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "artichoke")
+        imageView.image =  #imageLiteral(resourceName: "artichoke").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -36,7 +38,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewThree: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "asparagus")
+        imageView.image =  #imageLiteral(resourceName: "asparagus").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -44,7 +47,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewFour: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "banana")
+        imageView.image =  #imageLiteral(resourceName: "banana").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -52,7 +56,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewFive: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "broccoli")
+        imageView.image =  #imageLiteral(resourceName: "broccoli").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -60,7 +65,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewSix: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "carrot")
+        imageView.image =  #imageLiteral(resourceName: "carrot").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -68,7 +74,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewSeven: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "celery")
+        imageView.image =  #imageLiteral(resourceName: "celery").withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .accessGreen
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -76,7 +83,7 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewEight: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "eggplant")
+        imageView.image =  #imageLiteral(resourceName: "eggplant").withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -84,7 +91,7 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var imageViewNine: UIImageView = {
         let imageView = UIImageView()
-        imageView.image =  #imageLiteral(resourceName: "grapes")
+        imageView.image =  #imageLiteral(resourceName: "grapes").withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
