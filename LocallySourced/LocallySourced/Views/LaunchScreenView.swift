@@ -148,7 +148,7 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.image = #imageLiteral(resourceName: "image")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
