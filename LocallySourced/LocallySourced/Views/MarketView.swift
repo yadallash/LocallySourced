@@ -11,16 +11,9 @@ import UIKit
 class MarketView: UIView {
 
     lazy var marketCollectionView: UICollectionView = {
-        let screenHeight: CGFloat = UIScreen.main.bounds.height
-        let screenWidth: CGFloat = UIScreen.main.bounds.width
-        let cellSpacing: CGFloat = 10
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: screenWidth * 0.30, height: screenHeight * 0.18)
-        layout.sectionInset = UIEdgeInsetsMake(cellSpacing - 5 , cellSpacing + 5, cellSpacing - 5, cellSpacing + 5)
-        layout.minimumLineSpacing = cellSpacing
-        layout.minimumInteritemSpacing = cellSpacing
         layout.scrollDirection = .horizontal
-        let cView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        let cView = UICollectionView(frame: self.frame, collectionViewLayout: layout)
         cView.backgroundColor = .white
         cView.register(CityCell.self, forCellWithReuseIdentifier: "TestCell")
         return cView

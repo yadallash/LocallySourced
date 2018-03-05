@@ -48,9 +48,9 @@ class TestFavoriteTableViewCell: FoldingCell {
         marketTitle.font = UIFont.boldSystemFont(ofSize: 30)
         boroughTitle.text = farmersMarket.facilitycity?.rawValue
         
-        marketAdInfo.text = "\(farmersMarket.facilityaddinfo?.components(separatedBy: ".").first ?? "There is no more informaion abou the market") ."
+        marketAdInfo.text = "\(farmersMarket.facilityaddinfo?.components(separatedBy: ".").first ?? "There is no information about the market.") ."
         guard let notes = farmersMarket.notes else {
-            noteTextView.text = "You can add you notes here"
+            noteTextView.text = "You can add your notes here."
             return
         }
         noteTextView.text = notes
@@ -60,8 +60,6 @@ class TestFavoriteTableViewCell: FoldingCell {
         noteTextView.resignFirstResponder()
         delegate?.submitButtonPressed(sender: self)
     }
-    
-    
 
 }
 

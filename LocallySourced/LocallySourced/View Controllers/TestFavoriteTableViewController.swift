@@ -118,22 +118,22 @@ extension TestFavoriteTableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let oldNumberOfSections = sectionKey.count
             guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
             let removedMarket = marketPlaces.remove(at: indexPath.row)
-            favoriteFarmersMarkets.remove(at: indexPath.row)
-//            let filteredMarkets = favoriteFarmersMarkets.filter{$0.facilitycity?.rawValue == sectionKey[indexPath.section]}
-//            marketsByBouroghs[sectionKey[indexPath.section]] = filteredMarkets
-//            //            cellHeights[indexPath.section].remove(at: indexPath.row)
-//            if marketPlaces.isEmpty {
-//                marketsByBouroghs[sectionKey[indexPath.section]] = nil
-////                cellHeights.remove(at: indexPath.section)
-//                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
-//            } else {
-//                marketsByBouroghs[sectionKey[indexPath.section]] = marketPlaces
-//                setupCells()
-//            }
-            
-            setupCells()
+            cellHeights[indexPath.section].remove(at: indexPath.row)
+            if let index = favoriteFarmersMarkets.index(where: { (favoriteMarket) -> Bool in
+                return favoriteMarket.facilityname == removedMarket.facilityname && favoriteMarket.facilitystreetname == removedMarket.facilitystreetname && favoriteMarket.facilityzipcode == removedMarket.facilityzipcode
+            }) {
+                favoriteFarmersMarkets.remove(at: index)
+            }
+            if sectionKey.count < oldNumberOfSections {
+                //always delete sections first
+                cellHeights.remove(at: indexPath.section)
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+//            setupCells() - no need to set up cell heights anymore because they are properly accounted for here
             FileManagerHelper.manager.removeFarmersMarket(removedMarket)
         }
     }

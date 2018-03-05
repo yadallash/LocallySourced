@@ -148,7 +148,7 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "image")
+        imageView.image = #imageLiteral(resourceName: "logo")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
@@ -156,7 +156,7 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     // MARK: - Inititalizers
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: frame)
         commonInit()
     }
     
@@ -331,8 +331,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
      private func setupLogoImageView() {
         logoImageView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.bounds.height/4)
-            make.height.equalTo(self.bounds.height/4)
+            make.width.equalTo(self.snp.height).multipliedBy(0.25)
+            make.height.equalTo(self).multipliedBy(0.25)
             make.centerX.equalTo(self)
             make.centerY.equalTo(self).offset(-150)
         }

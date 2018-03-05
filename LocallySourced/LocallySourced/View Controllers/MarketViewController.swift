@@ -11,7 +11,9 @@ import SnapKit
 
 class MarketViewController: UIViewController {
     
-    let marketView = MarketView()
+    private let cellSpacing: CGFloat = 10
+    
+    private let marketView = MarketView()
     
     // Animations
     private let launchScreenView = LaunchScreenView()
@@ -21,7 +23,7 @@ class MarketViewController: UIViewController {
             animateMarketTV()
         }
     }
-    var filteredMarkets: [FarmersMarket] {
+    private var filteredMarkets: [FarmersMarket] {
         guard filteredByCity != "All" else {return markets}
         if let city = filteredByCity {
             return markets.filter{
@@ -35,10 +37,10 @@ class MarketViewController: UIViewController {
             return markets
         }
     }
-    var filteredByCity: String?
+    private var filteredByCity: String?
     
-    var cities = ["All", Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue]
-    var cityImages = [#imageLiteral(resourceName: "Above_Gotham"), #imageLiteral(resourceName: "bronximg"), #imageLiteral(resourceName: "brooklynimg"), #imageLiteral(resourceName: "manhattanimg"), #imageLiteral(resourceName: "queensimg"), #imageLiteral(resourceName: "statenimg")]
+    private var cities = ["All", Facilitycity.bronx.rawValue, Facilitycity.brooklyn.rawValue, Facilitycity.manhattan.rawValue, Facilitycity.queens.rawValue, Facilitycity.statenIsland.rawValue]
+    private var cityImages = [#imageLiteral(resourceName: "Above_Gotham"), #imageLiteral(resourceName: "bronximg"), #imageLiteral(resourceName: "brooklynimg"), #imageLiteral(resourceName: "manhattanimg"), #imageLiteral(resourceName: "queensimg"), #imageLiteral(resourceName: "statenimg")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,9 @@ class MarketViewController: UIViewController {
         loadMarkets()
         configNavBar()
         view.addSubview(launchScreenView)
+        launchScreenView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
         launchScreenView.delegate = self
         navigationController?.navigationBar.alpha = 0.0
         tabBarController?.tabBar.alpha = 0.0
@@ -60,7 +65,7 @@ class MarketViewController: UIViewController {
         })
     }
     
-    func configNavBar(){
+    private func configNavBar(){
         navigationItem.title = "Access Green"
     }
     
@@ -99,7 +104,7 @@ extension MarketViewController: UITableViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height*0.15
+        return view.frame.height*0.20
     }
 }
 extension MarketViewController: UITableViewDataSource {
@@ -147,6 +152,22 @@ extension MarketViewController: UICollectionViewDataSource {
         cell.testingImageView.image = cityImage
         cell.testingLabel.text = city.uppercased()
         return cell
+    }
+}
+extension MarketViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = collectionView.frame.height
+        let width: CGFloat = collectionView.frame.width
+        return CGSize(width: width * 0.30, height: height - (2 * cellSpacing))
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(cellSpacing - 5 , cellSpacing + 5, cellSpacing - 5, cellSpacing + 5)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return cellSpacing
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return cellSpacing
     }
 }
 extension MarketViewController: UICollectionViewDelegate {
