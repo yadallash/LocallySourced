@@ -28,6 +28,10 @@ class ShoppingListsViewController: UIViewController {
         listView.listTableView.dataSource = self
         listView.listTableView.estimatedRowHeight = 180
         constrainView()
+        configNavBar()
+    }
+    func configNavBar(){
+        navigationItem.title = "Access Green"
     }
     
     override func viewWillAppear(_ animated: Bool) {
