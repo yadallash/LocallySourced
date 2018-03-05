@@ -102,18 +102,18 @@ extension MarketViewController: UITableViewDataSource {
         guard let city = market.facilitycity else{
             return customCell
         }
-//        switch  city{
-//        case .bronx:
-//            customCell.containerView.image = UIImage(named: "bronximg")
-//        case .brooklyn:
-//            customCell.containerView.image = UIImage(named: "brooklynimg")
-//        case .manhattan:
-//            customCell.containerView.image = UIImage(named: "manhattanimg")
-//        case .queens:
-//            customCell.containerView.image = UIImage(named: "queensimg")
-//        case .statenIsland:
-//            customCell.containerView.image = UIImage(named: "statenimg")
-//        }
+        switch  city{
+        case .bronx:
+            customCell.containerView.image = UIImage(named: "bronximg")
+        case .brooklyn:
+            customCell.containerView.image = UIImage(named: "brooklynimg")
+        case .manhattan:
+            customCell.containerView.image = UIImage(named: "manhattanimg")
+        case .queens:
+            customCell.containerView.image = UIImage(named: "queensimg")
+        case .statenIsland:
+            customCell.containerView.image = UIImage(named: "statenimg")
+        }
         return customCell
     }
 }
