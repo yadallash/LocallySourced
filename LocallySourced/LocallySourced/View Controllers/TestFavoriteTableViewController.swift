@@ -15,6 +15,7 @@ class TestFavoriteTableViewController: UITableViewController {
     var cellHeights: [[CGFloat]] = [[]]
     var favoriteFarmersMarkets = [FarmersMarket]() {
         didSet{
+            marketsByBouroghs.removeAll()
             for market in favoriteFarmersMarkets{
                 if marketsByBouroghs[(market.facilitycity?.rawValue)!] != nil {
                     if !(marketsByBouroghs[(market.facilitycity?.rawValue)!]?.contains(where: { (savedMarket) -> Bool in
@@ -115,24 +116,27 @@ extension TestFavoriteTableViewController{
        return (marketsByBouroghs[sectionKey[section]]?.count) ?? 0
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
-//            let removedMarket = marketPlaces.remove(at: indexPath.row)
-//            favoriteFarmersMarkets.remove(at: indexPath.row)
-//            cellHeights[indexPath.section].remove(at: indexPath.row)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
+            let removedMarket = marketPlaces.remove(at: indexPath.row)
+            favoriteFarmersMarkets.remove(at: indexPath.row)
+//            let filteredMarkets = favoriteFarmersMarkets.filter{$0.facilitycity?.rawValue == sectionKey[indexPath.section]}
+//            marketsByBouroghs[sectionKey[indexPath.section]] = filteredMarkets
+//            //            cellHeights[indexPath.section].remove(at: indexPath.row)
 //            if marketPlaces.isEmpty {
 //                marketsByBouroghs[sectionKey[indexPath.section]] = nil
-//                cellHeights.remove(at: indexPath.section)
+////                cellHeights.remove(at: indexPath.section)
 //                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
 //            } else {
 //                marketsByBouroghs[sectionKey[indexPath.section]] = marketPlaces
 //                setupCells()
 //            }
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            FileManagerHelper.manager.removeFarmersMarket(removedMarket)
-//        }
-//    }
+            
+            setupCells()
+            FileManagerHelper.manager.removeFarmersMarket(removedMarket)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! TestFavoriteTableViewCell
