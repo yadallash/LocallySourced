@@ -17,7 +17,6 @@
 		81941F7E204B00BC009DC98B /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F7D204B00BC009DC98B /* NetworkHelper.swift */; };
 		81941F80204B017C009DC98B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F7F204B017C009DC98B /* DetailViewController.swift */; };
 		81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F81204B020C009DC98B /* FavoritesViewController.swift */; };
-		81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F85204B0356009DC98B /* FramersMarketDetailView.swift */; };
 		81941F88204B036A009DC98B /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F87204B036A009DC98B /* FavoritesView.swift */; };
 		81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */; };
 		81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */; };
@@ -82,7 +81,6 @@
 		81941F7D204B00BC009DC98B /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		81941F7F204B017C009DC98B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		81941F81204B020C009DC98B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		81941F85204B0356009DC98B /* FramersMarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramersMarketDetailView.swift; sourceTree = "<group>"; };
 		81941F87204B036A009DC98B /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsViewController.swift; sourceTree = "<group>"; };
 		81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsView.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				819D6B17204C84E00011E99D /* MarketView.swift */,
-				81941F85204B0356009DC98B /* FramersMarketDetailView.swift */,
 				81941F87204B036A009DC98B /* FavoritesView.swift */,
 				81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */,
 				F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */,
@@ -605,7 +602,6 @@
 				F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */,
 				F4CE56D0204B2D0E0024F011 /* DetailShoppingListView.swift in Sources */,
 				F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */,
-				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
 				81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */,
 				814BB115204CD02100EB08CE /* MarketCustomTableViewCell.swift in Sources */,
