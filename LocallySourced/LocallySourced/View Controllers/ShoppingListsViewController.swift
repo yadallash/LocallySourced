@@ -22,6 +22,7 @@ class ShoppingListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.title = "Shopping Lists"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addList))
         listView.listTableView.delegate = self
         listView.listTableView.dataSource = self
@@ -92,25 +93,12 @@ extension ShoppingListsViewController: UITableViewDataSource {
     
 }
 extension ShoppingListsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, handler) in
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            handler(true)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let removedList = shoppingList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            FileManagerHelper.manager.removeShoppingList(removedList)
         }
-        deleteAction.backgroundColor = .red
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        configuration.performsFirstActionWithFullSwipe = true //HERE..
-        return configuration
-    }
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
-            handler(true)
-        }
-        editAction.backgroundColor = .lightGray
-        let configuration = UISwipeActionsConfiguration(actions: [editAction])
-        configuration.performsFirstActionWithFullSwipe = true
-        return configuration
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
