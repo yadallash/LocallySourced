@@ -119,20 +119,25 @@ extension TestFavoriteTableViewController{
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
+            tableView.beginUpdates()
             let removedMarket = marketPlaces.remove(at: indexPath.row)
+//            let oldSectionName = removedMarket.facilitycity!.rawValue
             cellHeights[indexPath.section].remove(at: indexPath.row)
             if let index = favoriteFarmersMarkets.index(where: { (favoriteMarket) -> Bool in
                 return favoriteMarket.facilityname == removedMarket.facilityname && favoriteMarket.facilitystreetname == removedMarket.facilitystreetname && favoriteMarket.facilityzipcode == removedMarket.facilityzipcode
             }) {
                 favoriteFarmersMarkets.remove(at: index)
             }
+//            marketsByBouroghs[oldSectionName] = marketPlaces
+            //delete rows first
+            tableView.deleteRows(at: [indexPath], with: .fade)
             if marketPlaces.isEmpty {
-                //always delete sections first
+//                marketsByBouroghs[sectionKey[indexPath.section]] = nil
                 cellHeights.remove(at: indexPath.section)
                 tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
 //            setupCells() - no need to set up cell heights anymore because they are properly accounted for here
+            tableView.endUpdates()
             FileManagerHelper.manager.removeFarmersMarket(removedMarket)
         }
     }
