@@ -13,7 +13,7 @@ target 'LocallySourced' do
   pod 'SnapKit'
   pod 'Toucan'
   pod 'Kingfisher'
-  pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
+pod 'FoldingCell'
   target 'LocallySourcedTests' do
     inherit! :search_paths
     # Pods for testing

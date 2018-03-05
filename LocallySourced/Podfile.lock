@@ -1,21 +1,21 @@
 PODS:
-  - CollapsibleTableSectionViewController (1.0.1)
-  - Kingfisher (4.6.1)
+  - FoldingCell (3.0.3)
+  - Kingfisher (4.6.3)
   - SnapKit (4.0.0)
   - Toucan (1.0.0)
 
 DEPENDENCIES:
-  - CollapsibleTableSectionViewController (~> 1.0.0)
+  - FoldingCell
   - Kingfisher
   - SnapKit
   - Toucan
 
 SPEC CHECKSUMS:
-  CollapsibleTableSectionViewController: c41694de812a1039c5f8581c934cf0fc38e4e871
-  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  FoldingCell: 76ce5d1ddba34c6d25548b473b7b51585e992da0
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: 2b39e051950a60145811a16ead17738efc799cd5
+PODFILE CHECKSUM: 93c4114b87f1e62dbcad52f5841a6ef9a51ecec6
 
 COCOAPODS: 1.4.0

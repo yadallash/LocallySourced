@@ -8,25 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		4527098C09139AF54F4C9AC6 /* Pods_LocallySourced.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */; };
+		814BB115204CD02100EB08CE /* MarketCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */; };
+		814BB117204D169C00EB08CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814BB116204D169C00EB08CE /* Assets.xcassets */; };
+		81800F51204B393E00FE189C /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81800F50204B393E00FE189C /* MarketCell.swift */; };
 		81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F49204AF297009DC98B /* AppDelegate.swift */; };
-		81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F4B204AF297009DC98B /* MarketsViewController.swift */; };
-		81941F51204AF297009DC98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81941F50204AF297009DC98B /* Assets.xcassets */; };
 		81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941F52204AF297009DC98B /* LaunchScreen.storyboard */; };
 		81941F5F204AF297009DC98B /* LocallySourcedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F5E204AF297009DC98B /* LocallySourcedTests.swift */; };
 		81941F6A204AF297009DC98B /* LocallySourcedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F69204AF297009DC98B /* LocallySourcedUITests.swift */; };
 		81941F7E204B00BC009DC98B /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F7D204B00BC009DC98B /* NetworkHelper.swift */; };
 		81941F80204B017C009DC98B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F7F204B017C009DC98B /* DetailViewController.swift */; };
 		81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F81204B020C009DC98B /* FavoritesViewController.swift */; };
-		81941F84204B0341009DC98B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F83204B0341009DC98B /* HomeView.swift */; };
-		81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F85204B0356009DC98B /* FramersMarketDetailView.swift */; };
 		81941F88204B036A009DC98B /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F87204B036A009DC98B /* FavoritesView.swift */; };
 		81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */; };
 		81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */; };
 		81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F8F204B118E009DC98B /* FarmersMarket.swift */; };
-		81941F92204B132F009DC98B /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F91204B132F009DC98B /* ShoppingListViewController.swift */; };
 		81941F95204B1806009DC98B /* FarmersMarketAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */; };
 		81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F96204B1B78009DC98B /* FileManagerHelper.swift */; };
+		81941F99204B2835009DC98B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F98204B2835009DC98B /* Item.swift */; };
+		81941F9B204B2880009DC98B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9A204B2880009DC98B /* List.swift */; };
+		81941F9F204B2C70009DC98B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941F9E204B2C70009DC98B /* LocationService.swift */; };
+		81941FA1204B5608009DC98B /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */; };
+		81941FA4204B6FA9009DC98B /* TestFav.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81941FA3204B6FA9009DC98B /* TestFav.storyboard */; };
+		81941FA6204B70A3009DC98B /* TestFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */; };
+		81941FA8204B7127009DC98B /* TestFavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */; };
+		819D6B18204C84E00011E99D /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6B17204C84E00011E99D /* MarketView.swift */; };
+		819D6B1A204C87070011E99D /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6B19204C87070011E99D /* CityCell.swift */; };
+		819D6B1C204CA2220011E99D /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6B1B204CA2220011E99D /* MarketViewController.swift */; };
+		81E386CD204B2189003905D0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CC204B2189003905D0 /* DetailView.swift */; };
+		81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E386CE204B46BE003905D0 /* UIColor+Extension.swift */; };
+		81F8A9F7204CB62300A64279 /* ShoppingListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */; };
 		B3827E67095BFAE95A3915C9 /* Pods_LocallySourcedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */; };
+		F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */; };
+		F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */; };
+		F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CD204B2CDC0024F011 /* ItemCell.swift */; };
+		F4CE56D0204B2D0E0024F011 /* DetailShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */; };
+		F4E64EC0204D230000FDADE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E64EBF204D230000FDADE1 /* Assets.xcassets */; };
 		F84E0A49B395B24E53750F3C /* Pods_LocallySourcedUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FB3C1C2EA80682224E866A /* Pods_LocallySourcedUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,10 +67,11 @@
 		11EF6B71CA67CF398D0FF8BF /* Pods_LocallySourced.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourced.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638C05F4668F892D098C8591 /* Pods-LocallySourcedUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedUITests/Pods-LocallySourcedUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6FA17A7015C8A84A666CFBC3 /* Pods-LocallySourcedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.release.xcconfig"; sourceTree = "<group>"; };
+		814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCustomTableViewCell.swift; sourceTree = "<group>"; };
+		814BB116204D169C00EB08CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81800F50204B393E00FE189C /* MarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
 		81941F46204AF297009DC98B /* LocallySourced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocallySourced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81941F49204AF297009DC98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81941F4B204AF297009DC98B /* MarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
-		81941F50204AF297009DC98B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81941F53204AF297009DC98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81941F55204AF297009DC98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81941F5A204AF297009DC98B /* LocallySourcedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocallySourcedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,20 +83,35 @@
 		81941F7D204B00BC009DC98B /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		81941F7F204B017C009DC98B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		81941F81204B020C009DC98B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		81941F83204B0341009DC98B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		81941F85204B0356009DC98B /* FramersMarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramersMarketDetailView.swift; sourceTree = "<group>"; };
 		81941F87204B036A009DC98B /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsViewController.swift; sourceTree = "<group>"; };
 		81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsView.swift; sourceTree = "<group>"; };
 		81941F8F204B118E009DC98B /* FarmersMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmersMarket.swift; sourceTree = "<group>"; };
-		81941F91204B132F009DC98B /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmersMarketAPIClient.swift; sourceTree = "<group>"; };
 		81941F96204B1B78009DC98B /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
+		81941F98204B2835009DC98B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		81941F9A204B2880009DC98B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		81941F9E204B2C70009DC98B /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		81941FA3204B6FA9009DC98B /* TestFav.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestFav.storyboard; sourceTree = "<group>"; };
+		81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteTableViewController.swift; sourceTree = "<group>"; };
+		819D6B17204C84E00011E99D /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		819D6B19204C87070011E99D /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		819D6B1B204CA2220011E99D /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		81E386CC204B2189003905D0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		81E386CE204B46BE003905D0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsTableViewCell.swift; sourceTree = "<group>"; };
 		8DCDA61234C643B0A38D507B /* Pods-LocallySourcedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedUITests/Pods-LocallySourcedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		924E9112CA07F3F6D93727ED /* Pods-LocallySourced.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.debug.xcconfig"; sourceTree = "<group>"; };
 		C3C6AD24EFA119CAFF7496B2 /* Pods-LocallySourced.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourced.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced.release.xcconfig"; sourceTree = "<group>"; };
 		D9FB3C1C2EA80682224E866A /* Pods_LocallySourcedUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourcedUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E340F71690AC0D4FBDA22CF5 /* Pods-LocallySourcedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocallySourcedTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocallySourcedTests/Pods-LocallySourcedTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailShoppingListViewController.swift; sourceTree = "<group>"; };
+		F4CE56CD204B2CDC0024F011 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShoppingListView.swift; sourceTree = "<group>"; };
+		F4E64EBF204D230000FDADE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAAEDDBD4D38457F563E7B95 /* Pods_LocallySourcedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocallySourcedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +178,7 @@
 		81941F48204AF297009DC98B /* LocallySourced */ = {
 			isa = PBXGroup;
 			children = (
+				81941FA2204B6F85009DC98B /* StoryBoards */,
 				81941F7A204AF2E9009DC98B /* Views */,
 				81941F7B204AF2F4009DC98B /* Services */,
 				81941F7C204AF300009DC98B /* Models */,
@@ -177,11 +210,12 @@
 		81941F78204AF2BF009DC98B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				81941F4B204AF297009DC98B /* MarketsViewController.swift */,
+				819D6B1B204CA2220011E99D /* MarketViewController.swift */,
 				81941F7F204B017C009DC98B /* DetailViewController.swift */,
 				81941F81204B020C009DC98B /* FavoritesViewController.swift */,
 				81941F89204B0EE0009DC98B /* ShoppingListsViewController.swift */,
-				81941F91204B132F009DC98B /* ShoppingListViewController.swift */,
+				F410C0E0204B34010030BAD6 /* DetailShoppingListViewController.swift */,
+				81941FA7204B7127009DC98B /* TestFavoriteTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -189,8 +223,8 @@
 		81941F79204AF2CC009DC98B /* Supporting Files  */ = {
 			isa = PBXGroup;
 			children = (
+				F4E64EBF204D230000FDADE1 /* Assets.xcassets */,
 				81941F49204AF297009DC98B /* AppDelegate.swift */,
-				81941F50204AF297009DC98B /* Assets.xcassets */,
 				81941F52204AF297009DC98B /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files ";
@@ -199,11 +233,13 @@
 		81941F7A204AF2E9009DC98B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				81941F83204B0341009DC98B /* HomeView.swift */,
-				81941F85204B0356009DC98B /* FramersMarketDetailView.swift */,
+				819D6B17204C84E00011E99D /* MarketView.swift */,
 				81941F87204B036A009DC98B /* FavoritesView.swift */,
 				81941F8B204B0EFB009DC98B /* ShoppingListsView.swift */,
-				81941F93204B1344009DC98B /* Cells */,
+				F4CE56CF204B2D0E0024F011 /* DetailShoppingListView.swift */,
+				81E386CC204B2189003905D0 /* DetailView.swift */,
+				F4073625204CA0B3001D1FBB /* LaunchScreenView.swift */,
+				F4CE56CC204B2CC80024F011 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +250,7 @@
 				81941F7D204B00BC009DC98B /* NetworkHelper.swift */,
 				81941F94204B1806009DC98B /* FarmersMarketAPIClient.swift */,
 				81941F96204B1B78009DC98B /* FileManagerHelper.swift */,
+				81941F9E204B2C70009DC98B /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -222,15 +259,19 @@
 			isa = PBXGroup;
 			children = (
 				81941F8F204B118E009DC98B /* FarmersMarket.swift */,
+				81941F98204B2835009DC98B /* Item.swift */,
+				81941F9A204B2880009DC98B /* List.swift */,
+				81E386CE204B46BE003905D0 /* UIColor+Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		81941F93204B1344009DC98B /* Cells */ = {
+		81941FA2204B6F85009DC98B /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				81941FA3204B6FA9009DC98B /* TestFav.storyboard */,
 			);
-			path = Cells;
+			path = StoryBoards;
 			sourceTree = "<group>";
 		};
 		8AA34273860BC43F3A274F51 /* Pods */ = {
@@ -244,6 +285,20 @@
 				638C05F4668F892D098C8591 /* Pods-LocallySourcedUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4CE56CC204B2CC80024F011 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F4CE56CD204B2CDC0024F011 /* ItemCell.swift */,
+				81800F50204B393E00FE189C /* MarketCell.swift */,
+				81941FA0204B5608009DC98B /* FavoriteTableViewCell.swift */,
+				81941FA5204B70A3009DC98B /* TestFavoriteTableViewCell.swift */,
+				819D6B19204C87070011E99D /* CityCell.swift */,
+				81F8A9F6204CB62300A64279 /* ShoppingListsTableViewCell.swift */,
+				814BB114204CD02100EB08CE /* MarketCustomTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,7 +418,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81941F54204AF297009DC98B /* LaunchScreen.storyboard in Resources */,
-				81941F51204AF297009DC98B /* Assets.xcassets in Resources */,
+				F4E64EC0204D230000FDADE1 /* Assets.xcassets in Resources */,
+				81941FA4204B6FA9009DC98B /* TestFav.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,14 +576,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LocallySourced/Pods-LocallySourced-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
@@ -544,20 +600,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81941F4C204AF297009DC98B /* MarketsViewController.swift in Sources */,
-				81941F86204B0356009DC98B /* FramersMarketDetailView.swift in Sources */,
+				81E386CF204B46BE003905D0 /* UIColor+Extension.swift in Sources */,
+				F4073626204CA0B3001D1FBB /* LaunchScreenView.swift in Sources */,
+				F4CE56D0204B2D0E0024F011 /* DetailShoppingListView.swift in Sources */,
+				F410C0E1204B34020030BAD6 /* DetailShoppingListViewController.swift in Sources */,
 				81941F8C204B0EFB009DC98B /* ShoppingListsView.swift in Sources */,
 				81941F97204B1B78009DC98B /* FileManagerHelper.swift in Sources */,
+				814BB115204CD02100EB08CE /* MarketCustomTableViewCell.swift in Sources */,
+				81941F9B204B2880009DC98B /* List.swift in Sources */,
 				81941F8A204B0EE0009DC98B /* ShoppingListsViewController.swift in Sources */,
 				81941F7E204B00BC009DC98B /* NetworkHelper.swift in Sources */,
 				81941F95204B1806009DC98B /* FarmersMarketAPIClient.swift in Sources */,
 				81941F4A204AF297009DC98B /* AppDelegate.swift in Sources */,
+				81941F99204B2835009DC98B /* Item.swift in Sources */,
 				81941F88204B036A009DC98B /* FavoritesView.swift in Sources */,
-				81941F84204B0341009DC98B /* HomeView.swift in Sources */,
-				81941F92204B132F009DC98B /* ShoppingListViewController.swift in Sources */,
 				81941F80204B017C009DC98B /* DetailViewController.swift in Sources */,
+				81800F51204B393E00FE189C /* MarketCell.swift in Sources */,
 				81941F90204B118E009DC98B /* FarmersMarket.swift in Sources */,
+				81941F9F204B2C70009DC98B /* LocationService.swift in Sources */,
+				81E386CD204B2189003905D0 /* DetailView.swift in Sources */,
+				819D6B1C204CA2220011E99D /* MarketViewController.swift in Sources */,
+				81941FA8204B7127009DC98B /* TestFavoriteTableViewController.swift in Sources */,
 				81941F82204B020C009DC98B /* FavoritesViewController.swift in Sources */,
+				81941FA6204B70A3009DC98B /* TestFavoriteTableViewCell.swift in Sources */,
+				81941FA1204B5608009DC98B /* FavoriteTableViewCell.swift in Sources */,
+				819D6B18204C84E00011E99D /* MarketView.swift in Sources */,
+				81F8A9F7204CB62300A64279 /* ShoppingListsTableViewCell.swift in Sources */,
+				819D6B1A204C87070011E99D /* CityCell.swift in Sources */,
+				F4CE56CE204B2CDC0024F011 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +789,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J9A6F8G6MR;
 				INFOPLIST_FILE = LocallySourced/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TeamLocallySourced.LocallySourced;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -735,6 +806,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J9A6F8G6MR;
 				INFOPLIST_FILE = LocallySourced/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TeamLocallySourced.LocallySourced;
 				PRODUCT_NAME = "$(TARGET_NAME)";
