@@ -32,7 +32,7 @@ class DetailShoppingListView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .yellow
+        backgroundColor = UIColor.white
         setupViews()
     }
     
