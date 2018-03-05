@@ -13,11 +13,15 @@ class TestFavoriteTableViewController: UITableViewController {
     let kOpenCellHeight: CGFloat = 488
     var kRowsCount = 10
     var cellHeights: [[CGFloat]] = [[]]
-    var favoritFarmersMarkets = [FarmersMarket]() {
+    var favoriteFarmersMarkets = [FarmersMarket]() {
         didSet{
-            for market in favoritFarmersMarkets{
+            for market in favoriteFarmersMarkets{
                 if marketsByBouroghs[(market.facilitycity?.rawValue)!] != nil {
-                    marketsByBouroghs[(market.facilitycity?.rawValue)!]?.append(market)
+                    if !(marketsByBouroghs[(market.facilitycity?.rawValue)!]?.contains(where: { (savedMarket) -> Bool in
+                        return savedMarket.facilityname == market.facilityname && market.facilitycity?.rawValue == savedMarket.facilitycity?.rawValue && market.facilityzipcode == savedMarket.facilityzipcode
+                    }))! {
+                        marketsByBouroghs[(market.facilitycity?.rawValue)!]?.append(market)
+                    }
                 }else{
                     marketsByBouroghs[(market.facilitycity?.rawValue)!] = [market]
                 }
@@ -60,10 +64,16 @@ class TestFavoriteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FileManagerHelper.manager.loadSavedFarmersMarket()
-        self.favoritFarmersMarkets = FileManagerHelper.manager.retrieveSavedFarmersMarket()
+        self.favoriteFarmersMarkets = FileManagerHelper.manager.retrieveSavedFarmersMarket()
         configNavBar()
         setupCells()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoriteFarmersMarkets = FileManagerHelper.manager.retrieveSavedFarmersMarket()
+        setupCells()
+//        tableView.reloadData()
     }
     private func setupCells() {
         kCloseCellHeight = self.view.bounds.height*0.25
@@ -72,7 +82,7 @@ class TestFavoriteTableViewController: UITableViewController {
             let arrayOfMarkets = marketsByBouroghs[sectionKey[i]]
             cellHeights[i] = Array(repeating: kCloseCellHeight, count: arrayOfMarkets!.count)
         }
-        kRowsCount = favoritFarmersMarkets.count
+        kRowsCount = favoriteFarmersMarkets.count
         tableView.estimatedRowHeight = kCloseCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         animateMarketTV()
@@ -104,6 +114,23 @@ extension TestFavoriteTableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return (marketsByBouroghs[sectionKey[section]]?.count) ?? 0
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
+            let removedMarket = marketPlaces.remove(at: indexPath.row)
+            favoriteFarmersMarkets.remove(at: indexPath.row)
+            if marketPlaces.isEmpty {
+                marketsByBouroghs[sectionKey[indexPath.section]] = nil
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+            } else {
+                marketsByBouroghs[sectionKey[indexPath.section]] = marketPlaces
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            FileManagerHelper.manager.removeFarmersMarket(removedMarket)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! TestFavoriteTableViewCell
         
