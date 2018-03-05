@@ -104,7 +104,7 @@ extension MarketViewController: UITableViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height*0.15
+        return view.frame.height*0.20
     }
 }
 extension MarketViewController: UITableViewDataSource {
