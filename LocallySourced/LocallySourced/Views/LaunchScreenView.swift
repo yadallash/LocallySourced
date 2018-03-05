@@ -142,8 +142,16 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
         let label = UILabel()
         label.text = "Access Green"
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .white
+        label.textColor = .black
         return label
+    }()
+    
+    lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     // MARK: - Inititalizers
@@ -159,10 +167,11 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
     
     // MARK: - Functions
     private func commonInit() {
-        backgroundColor = .black
+//        backgroundColor = UIColor(displayP3Red: 100/255, green: 180/255, blue: 130/255, alpha: 1)
+        backgroundColor = UIColor.white
         addSubviews()
         setupViews()
-        //        animations()
+        animateView()
     }
     
     private func addSubviews() {
@@ -181,7 +190,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
 //        addSubview(imageViewThirteen)
 //        addSubview(imageViewFourteen)
 //        addSubview(imageViewFifteen)
-        addSubview(nameLabel)
+//        addSubview(nameLabel)
+        addSubview(logoImageView)
     }
     
     private func setupViews() {
@@ -192,7 +202,8 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
         setupImageViewFive()
         setupImageViewSix()
         setupImageViewSeven()
-        setupNameLabel()
+//        setupNameLabel()
+        setupLogoImageView()
     }
     
     func animateTranslation(with valueOne: CGFloat, with valueTwo: CGFloat, with valueThree: CGFloat, for image: UIImageView) {
@@ -204,6 +215,43 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
         image.layer.add(animation, forKey: nil)
     }
     
+    private func animations() {
+        animateTranslation(with: 200, with: 400, with: -100, for: self.imageViewOne)
+        animateTranslation(with: -800, with: -100, with: -100, for: self.imageViewTwo)
+        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewThree)
+        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewFour)
+        animateTranslation(with: -200, with: 400, with: 100, for: self.imageViewFive)
+        animateTranslation(with: -200, with: 400, with: 100, for: self.imageViewSix)
+        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewSeven)
+    }
+    
+    private func fadeView() {
+        self.imageViewOne.layer.opacity = 0
+        self.imageViewTwo.layer.opacity = 0
+        self.imageViewThree.layer.opacity = 0
+        self.imageViewFour.layer.opacity = 0
+        self.imageViewFive.layer.opacity = 0
+        self.imageViewSix.layer.opacity = 0
+        self.imageViewSeven.layer.opacity = 0
+        self.nameLabel.layer.opacity = 0
+    }
+    
+    private func animateView() {
+        UIView.animate(withDuration: 4.0, animations: {
+            self.animations()
+        }) { (success:Bool) in
+            if success {
+                //Fade the entire view out
+                UIView.animate(withDuration: 4.0, animations: {
+                    self.fadeView()
+                }) {(success) in
+                    self.delegate?.animationEnded()
+                }
+            }
+        }
+    }
+
+    // MARK: - SNP Constraints
     // apple image
     private func setupImageViewOne() {
         imageViewOne.snp.makeConstraints { (make) -> Void in
@@ -281,40 +329,13 @@ class LaunchScreenView: UIView, UICollisionBehaviorDelegate {
         }
     }
     
-    private func animations() {
-        animateTranslation(with: 200, with: 400, with: -100, for: self.imageViewOne)
-        animateTranslation(with: -800, with: -100, with: -100, for: self.imageViewTwo)
-        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewThree)
-        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewFour)
-        animateTranslation(with: -200, with: 400, with: 100, for: self.imageViewFive)
-        animateTranslation(with: -200, with: 400, with: 100, for: self.imageViewSix)
-        animateTranslation(with: -200, with: -400, with: -100, for: self.imageViewSeven)
-    }
-    
-    private func fadeView() {
-        self.imageViewOne.layer.opacity = 0
-        self.imageViewTwo.layer.opacity = 0
-        self.imageViewThree.layer.opacity = 0
-        self.imageViewFour.layer.opacity = 0
-        self.imageViewFive.layer.opacity = 0
-        self.imageViewSix.layer.opacity = 0
-        self.imageViewSeven.layer.opacity = 0
-        self.nameLabel.layer.opacity = 0
-    }
-    
-    private func animateView() {
-        
-        UIView.animate(withDuration: 3.0, animations: {
-            self.animations()
-        }) { (success:Bool) in
-            if success {
-                //Fade the entire view out
-                UIView.animate(withDuration: 3.0, animations: {
-                    self.fadeView()
-                }) {(success) in
-                    self.delegate?.animationEnded()
-                }
-            }
+     private func setupLogoImageView() {
+        logoImageView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.bounds.height/4)
+            make.height.equalTo(self.bounds.height/4)
+            make.centerX.equalTo(self)
+            make.centerY.equalTo(self).offset(-150)
         }
     }
+    
 }

@@ -13,6 +13,9 @@ class MarketViewController: UIViewController {
     
     let marketView = MarketView()
     
+    // Animations
+    private let launchScreenView = LaunchScreenView()
+    
     public var markets = [FarmersMarket]() {
         didSet {
             animateMarketTV()
@@ -39,12 +42,22 @@ class MarketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .white
         navigationController?.title = "Access Green"
         marketView.marketTableView.dataSource = self; marketView.marketTableView.delegate = self
         marketView.marketCollectionView.dataSource = self; marketView.marketCollectionView.delegate = self
         constrainView()
         loadMarkets()
+        view.addSubview(launchScreenView)
+        launchScreenView.delegate = self
+        navigationController?.navigationBar.alpha = 0.0
+        tabBarController?.tabBar.alpha = 0.0
+        UIView.animate(withDuration: 4.0, delay: 2.0, animations: {
+            self.navigationController?.navigationBar.alpha = 1.0
+            self.tabBarController?.tabBar.alpha = 1.0
+            
+        })
     }
     
     private func constrainView() {
@@ -144,4 +157,9 @@ extension MarketViewController: UICollectionViewDelegate {
     }
 }
 
+extension MarketViewController: LaunchViewDelegate {
+    public func animationEnded() {
+        launchScreenView.removeFromSuperview()
+    }
+}
 
