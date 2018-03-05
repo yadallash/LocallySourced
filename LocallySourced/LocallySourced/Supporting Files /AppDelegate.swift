@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //instance of the homeViewController
         let marketsViewiewController = MarketViewController()
         let navigationHomeController = UINavigationController(rootViewController: marketsViewiewController)
-        navigationHomeController.tabBarItem = UITabBarItem(title: "Markets", image: #imageLiteral(resourceName: "leafmono"), selectedImage: nil)
+        navigationHomeController.tabBarItem = UITabBarItem(title: "Markets", image: #imageLiteral(resourceName: "marketsLogo"), selectedImage: nil)
         //instance of favoriteViewController
         let favoriteViewController = FavoritesViewController()
         let navigationFavoriteViewController = UINavigationController(rootViewController: favoriteViewController)
