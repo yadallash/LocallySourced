@@ -115,21 +115,24 @@ extension TestFavoriteTableViewController{
        return (marketsByBouroghs[sectionKey[section]]?.count) ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
-            let removedMarket = marketPlaces.remove(at: indexPath.row)
-            favoriteFarmersMarkets.remove(at: indexPath.row)
-            if marketPlaces.isEmpty {
-                marketsByBouroghs[sectionKey[indexPath.section]] = nil
-                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
-            } else {
-                marketsByBouroghs[sectionKey[indexPath.section]] = marketPlaces
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            FileManagerHelper.manager.removeFarmersMarket(removedMarket)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            guard var marketPlaces = marketsByBouroghs[sectionKey[indexPath.section]] else{ return }
+//            let removedMarket = marketPlaces.remove(at: indexPath.row)
+//            favoriteFarmersMarkets.remove(at: indexPath.row)
+//            cellHeights[indexPath.section].remove(at: indexPath.row)
+//            if marketPlaces.isEmpty {
+//                marketsByBouroghs[sectionKey[indexPath.section]] = nil
+//                cellHeights.remove(at: indexPath.section)
+//                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+//            } else {
+//                marketsByBouroghs[sectionKey[indexPath.section]] = marketPlaces
+//                setupCells()
+//            }
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            FileManagerHelper.manager.removeFarmersMarket(removedMarket)
+//        }
+//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as! TestFavoriteTableViewCell
