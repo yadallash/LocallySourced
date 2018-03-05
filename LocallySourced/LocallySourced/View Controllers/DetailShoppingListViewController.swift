@@ -72,8 +72,15 @@ class DetailShoppingListViewController: UIViewController {
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
             let textField = alert.textFields![0]
             let item = Item(name: textField.text!, amount: 0, completed: false)
-            let _ = FileManagerHelper.manager.addItem(item, toShoppingList: self!.shoppingList)
-            self?.detailShoppingListView.shoppingListTableView.reloadData()
+            let didAddItem = FileManagerHelper.manager.addItem(item, toShoppingList: self!.shoppingList)
+            if didAddItem {
+                self?.detailShoppingListView.shoppingListTableView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "Error", message: "You've added this item already.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self?.present(alert, animated: true, completion: nil)
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alert.addTextField()
