@@ -1,12 +1,6 @@
 # LocallySourced
 ## Hackathon Project Plan
 
-nature calls lol - clint, melissa
-wifi hotspot
-farmers market - clint, yaseen, nate
-std/hiv testing - yaseen, melissa, clint
-flu shot centers
-
 Theme - Access
 specific population, who faces barriers
 do something to fix it
